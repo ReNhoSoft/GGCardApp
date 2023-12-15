@@ -1,0 +1,147 @@
+{
+  "cards": [
+    {
+      "header": "Grab",
+      "body": "Throw > 46PK",
+      "media": {
+        "type": "video/webm",
+        "source": "videos/Jam/Throw1.webm"
+      },
+      "tags": ["Potemkin", "PK Route", "Throw", "Meterless"]
+    },
+    {
+      "header": "Grab",
+      "body": "Throw > 2H(1) > 46PK",
+      "media": {
+        "type": "video/webm",
+        "source": "videos/Jam/Throw2.webm"
+      },
+      "tags": ["Potemkin", "PK Route", "Throw", "Meterless"]
+    },
+    {
+      "header": "Grab",
+      "body": "Throw > RRC > Card > cS > fS > 2H(1) > 46PK",
+      "media": {
+        "type": "video/webm",
+        "source": "videos/Jam/Throw3.webm"
+      },
+      "tags": ["Potemkin", "PK Route", "Throw", "RRC"]
+    },
+    {
+      "header": "Grab",
+      "body": "Throw > RRC > Card > cS > 6P > 2H(1) > 46PK",
+      "media": {
+        "type": "video/webm",
+        "source": "videos/Jam/Throw4.webm"
+      },
+      "tags": ["Potemkin", "PK Route", "Throw", "RRC"]
+    },
+    {
+      "header": "Carded Gekirin",
+      "body": "Carded Gekirin > cS > fS > 2H(1) > 46PK",
+      "media": {
+        "type": "video/webm",
+        "source": "videos/Jam/CGekirin1.webm"
+      },
+      "tags": ["Potemkin", "PK Route", "Gekirin", "Meterless", "Carded Gekirin"]
+    },
+    {
+      "header": "Puffball CH",
+      "body": "Puffball CH > cS > 6P > 5H > 2H(1) > 46PK",
+      "media": {
+        "type": "video/webm",
+        "source": "videos/Jam/Puffball1.webm"
+      },
+      "tags": ["Potemkin", "PK Route", "Puffball", "Counterhit", "Meterless"]
+    },
+    {
+      "header": "Puffball CH",
+      "body": "Puffball CH > cS > 2S > 5H > 2H(1) > 46PK",
+      "media": {
+        "type": "video/webm",
+        "source": "videos/Jam/Puffball1.webm"
+      },
+      "tags": ["Potemkin", "PK Route", "Puffball", "Counterhit", "Meterless"]
+    },
+    {
+      "header": "Puffball CH",
+      "body": "Puffball CH > 6K > 2H > 46PK",
+      "media": {
+        "type": "video/webm",
+        "source": "videos/Jam/Puffball3.webm"
+      },
+      "tags": ["Potemkin", "PK Route", "Puffball", "Counterhit", "Meterless"]
+    },
+    {
+      "header": "Puffball CH",
+      "body": "Puffball CH > cS > fS > 2H(1) > 46PK",
+      "media": {
+        "type": "video/webm",
+        "source": "videos/Jam/Puffball4.webm"
+      },
+      "tags": ["Potemkin", "PK Route", "Puffball", "Counterhit", "Meterless"]
+    },
+    {
+      "header": "IAD DP",
+      "body": "IAD DP > 2S > 2H(1) > 46PK",
+      "media": {
+        "type": "video/webm",
+        "source": "videos/Jam/IADDP1.webm"
+      },
+      "tags": ["Potemkin", "PK Route", "DP", "Meterless"]
+    },
+    {
+      "header": "IAD DP",
+      "body": "IAD DP > cS > 2H(1) > 46PK",
+      "media": {
+        "type": "video/webm",
+        "source": "videos/Jam/IADDP2.webm"
+      },
+      "tags": ["Potemkin", "PK Route", "DP", "Meterless"]
+    },
+    {
+      "header": "fS CH",
+      "body": "fS CH > IAD jPKS > cS > 2H(1) > 46PK",
+      "media": {
+        "type": "video/webm",
+        "source": "videos/Jam/fS1.webm"
+      },
+      "tags": ["Potemkin", "PK Route", "Meterless", "fS", "Counterhit"]
+    },
+    {
+      "header": "2D RRC",
+      "body": "2D > RRC > cS > fS > 2H(1) > 46PK",
+      "media": {
+        "type": "video/webm",
+        "source": "videos/Jam/2D1.webm"
+      },
+      "tags": ["Potemkin", "PK Route", "Meterless", "2D", "RRC"]
+    },
+    {
+      "header": "Puffball Super",
+      "body": "Renhoukyaku > 5P > cS > 5H(1) > 2H(1) > 46PK",
+      "media": {
+        "type": "video/webm",
+        "source": "videos/Jam/PuffSuper.webm"
+      },
+      "tags": [
+        "Potemkin",
+        "PK Route",
+        "Meterless",
+        "2D",
+        "Renhoukyaku",
+        "Super"
+      ]
+    },
+    {
+      "header": "How do you do Jam's kick specials immediately out of the command dash?",
+      "body": " Kara cancel from the 236SK. Jam's 236SK can be cancelled into Ryujin, Kenroukaku, or Gekirin at any time during startup, active, or recovery, even if it whiffs.",
+      "tags": ["Kuradoberi Jam", "Character", "FAQ"]
+    },
+    {
+      "header": "Sometimes I see Jam go downwards with her DP in the air, what's going on?",
+      "body": "A: Jam has utilized a momentum glitch with her air specials since her first appearance in GGX. By performing the special move DURING the airdash movement, their movement is affected.\n* Ryujin drops slowly down. It's mostly useless, and you don't want to do this.\n* Gekirin drops straight down instead of jumping in an arc. This is very effective, much safer, and starts good combos. You can cross up with this as well.\n* Kenroukaku also falls down instead of rising. With a charged kenroukaku, you can use this as a very strong left/right mixup during okizeme, and continue a full combo out of it.\n* If you're having trouble doing these, and seeing Jam perform the special moves as they act outside of an airdash, you're doing them too slow. The special move must execute DURING the airdash, not after.",
+      "tags": ["Kuradoberi Jam", "Character", "FAQ", "Matchup"]
+    }
+  ]
+}
