@@ -2,6 +2,7 @@ import { useState } from "react";
 import CardTag from "./CardTag";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import CmdInputMarkdown from "./CmdInputMarkdown";
 
 export default function Card({card}) {
   const [showVideo, setShowVideo] = useState(false);
@@ -9,13 +10,15 @@ export default function Card({card}) {
   return (
     <div className="card">
       <div className="header">
-        <h1>{card.header?.toUpperCase()}</h1>
+        <h3>{card.header?.toUpperCase()}</h3>
       </div>
       <div className="body">
-        <Markdown remarkPlugins={[remarkGfm]}>{card.body}</Markdown> 
+        <Markdown className='Markdown'
+        remarkPlugins={[remarkGfm]}>{card.body}</Markdown> 
+        {/* <CmdInputMarkdown input={card.body}/> */}
         {!showVideo && card.media && <button onClick={() => setShowVideo(true)} >Show Video</button> }
         {showVideo && card.media && (
-          <video muted={true} controls={true} autoPlay={true}>
+          <video muted={true} controls={false} autoPlay={true} loop={true}>
             <source
               src={card.media.source}
               type={card.media.type}

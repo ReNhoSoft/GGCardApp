@@ -20,6 +20,22 @@ a {
   @apply font-bold 
 }
 
+.PageBody h1 {
+  @apply
+  text-4xl
+  text-emerald-100
+  pt-4
+}
+
+.PageBody {
+  @apply
+  max-w-6xl
+  align-middle
+  content-center
+  table
+  m-auto
+}
+
 .cardContainer {
   align-items: flex-start;
   @apply flex flex-row flex-wrap
@@ -49,7 +65,14 @@ a {
   @apply flex-none bg-lime-950 rounded-md pl-2 pr-2 ml-1 mr-1 text-sm text-white
 }
 
+.Markdown img {
+  display:inline
+}
 
+.Markdown {
+  @apply
+  pb-2
+}
 
 li {
   @apply list-disc ml-6

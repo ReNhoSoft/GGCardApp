@@ -25,7 +25,7 @@ export default function SearchBar() {
 
     return (
       <div>
-        <div className="mt-12 mb-12 ">
+        <div className="mt-4 mb-4 ">
           <form
             onSubmit={(event) => {
               event.preventDefault();

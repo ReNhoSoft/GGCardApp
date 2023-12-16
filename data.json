@@ -2,7 +2,7 @@
   "cards": [
     {
       "header": "Grab",
-      "body": "Throw > 46PK",
+      "body": "Throw > ![](/public/input_icons/4.png)![](public/input_icons/6.png)![](public/input_icons/P.png)![](public/input_icons/K.png)",
       "media": {
         "type": "video/webm",
         "source": "videos/Jam/Throw1.webm"
@@ -11,7 +11,7 @@
     },
     {
       "header": "Grab",
-      "body": "Throw > 2H(1) > 46PK",
+      "body": "Throw > ![](/public/input_icons/2.png)![](/public/input_icons/H.png) (1) > ![](/public/input_icons/4.png)![](public/input_icons/6.png)![](public/input_icons/P.png)![](public/input_icons/K.png)",
       "media": {
         "type": "video/webm",
         "source": "videos/Jam/Throw2.webm"
@@ -20,7 +20,7 @@
     },
     {
       "header": "Grab",
-      "body": "Throw > RRC > Card > cS > fS > 2H(1) > 46PK",
+      "body": "Throw > RRC > Card > c.![](/public/input_icons/S.png) > f.![](/public/input_icons/S.png) > ![](/public/input_icons/2.png)![](/public/input_icons/H.png)(1) > ![](/public/input_icons/4.png)![](public/input_icons/6.png)![](public/input_icons/P.png)![](public/input_icons/K.png)",
       "media": {
         "type": "video/webm",
         "source": "videos/Jam/Throw3.webm"
@@ -29,7 +29,7 @@
     },
     {
       "header": "Grab",
-      "body": "Throw > RRC > Card > cS > 6P > 2H(1) > 46PK",
+      "body": "Throw > RRC > Card > c.![](/public/input_icons/S.png) > ![](/public/input_icons/6.png)![](/public/input_icons/P.png) > ![](/public/input_icons/2.png)![](/public/input_icons/H.png)(1) > ![](/public/input_icons/4.png)![](public/input_icons/6.png)![](public/input_icons/P.png)![](public/input_icons/K.png)",
       "media": {
         "type": "video/webm",
         "source": "videos/Jam/Throw4.webm"
@@ -38,16 +38,16 @@
     },
     {
       "header": "Carded Gekirin",
-      "body": "Carded Gekirin > cS > fS > 2H(1) > 46PK",
+      "body": "Carded Gekirin > c.![](/public/input_icons/S.png)  > f.![](/public/input_icons/S.png)  > ![](/public/input_icons/2.png)![](/public/input_icons/H.png)(1) > ![](/public/input_icons/4.png)![](public/input_icons/6.png)![](public/input_icons/P.png)![](public/input_icons/K.png)",
       "media": {
-        "type": "video/webm",
+        "type": "video/webm", 
         "source": "videos/Jam/CGekirin1.webm"
       },
       "tags": ["Potemkin", "PK Route", "Gekirin", "Meterless", "Carded Gekirin"]
     },
     {
       "header": "Puffball CH",
-      "body": "Puffball CH > cS > 6P > 5H > 2H(1) > 46PK",
+      "body": "Puffball CH > c![](/public/input_icons/S.png) > ![](/public/input_icons/6.png)![](/public/input_icons/P.png) > ![](/public/input_icons/5.png)![](/public/input_icons/H.png) > ![](/public/input_icons/2.png)![](/public/input_icons/H.png)(1) > ![](/public/input_icons/4.png)![](public/input_icons/6.png)![](public/input_icons/P.png)![](public/input_icons/K.png)",
       "media": {
         "type": "video/webm",
         "source": "videos/Jam/Puffball1.webm"
@@ -56,7 +56,7 @@
     },
     {
       "header": "Puffball CH",
-      "body": "Puffball CH > cS > 2S > 5H > 2H(1) > 46PK",
+      "body": "Puffball CH > c.![](/public/input_icons/S.png) > ![](/public/input_icons/2.png)![](/public/input_icons/S.png) > ![](/public/input_icons/5.png)![](/public/input_icons/H.png) (1) > ![](/public/input_icons/4.png)![](public/input_icons/6.png)![](public/input_icons/P.png)![](public/input_icons/K.png)",
       "media": {
         "type": "video/webm",
         "source": "videos/Jam/Puffball1.webm"
@@ -65,7 +65,7 @@
     },
     {
       "header": "Puffball CH",
-      "body": "Puffball CH > 6K > 2H > 46PK",
+      "body": "Puffball CH > ![](/public/input_icons/6.png)[](/public/input_icons/K.png) > ![](/public/input_icons/2.png)![](/public/input_icons/H.png) > ![](/public/input_icons/4.png)![](public/input_icons/6.png)![](public/input_icons/P.png)![](public/input_icons/K.png)",
       "media": {
         "type": "video/webm",
         "source": "videos/Jam/Puffball3.webm"
@@ -74,7 +74,7 @@
     },
     {
       "header": "Puffball CH",
-      "body": "Puffball CH > cS > fS > 2H(1) > 46PK",
+      "body": "Puffball CH > c.![](/public/input_icons/S.png) > f.![](/public/input_icons/S.png) > ![](/public/input_icons/2.png)![](/public/input_icons/H.png)(1) > ![](/public/input_icons/4.png)![](public/input_icons/6.png)![](public/input_icons/P.png)![](public/input_icons/K.png)",
       "media": {
         "type": "video/webm",
         "source": "videos/Jam/Puffball4.webm"
@@ -83,7 +83,7 @@
     },
     {
       "header": "IAD DP",
-      "body": "IAD DP > 2S > 2H(1) > 46PK",
+      "body": "IAD DP > ![](/public/input_icons/2.png)![](/public/input_icons/S.png) > ![](/public/input_icons/2.png)![](/public/input_icons/H.png)(1) > ![](/public/input_icons/4.png)![](public/input_icons/6.png)![](public/input_icons/P.png)![](public/input_icons/K.png)",
       "media": {
         "type": "video/webm",
         "source": "videos/Jam/IADDP1.webm"
@@ -92,7 +92,7 @@
     },
     {
       "header": "IAD DP",
-      "body": "IAD DP > cS > 2H(1) > 46PK",
+      "body": "IAD DP > c.![](/public/input_icons/S.png) > ![](/public/input_icons/2.png)![](/public/input_icons/H.png) > ![](/public/input_icons/4.png)![](public/input_icons/6.png)![](public/input_icons/P.png)![](public/input_icons/K.png)",
       "media": {
         "type": "video/webm",
         "source": "videos/Jam/IADDP2.webm"
@@ -101,7 +101,7 @@
     },
     {
       "header": "fS CH",
-      "body": "fS CH > IAD jPKS > cS > 2H(1) > 46PK",
+      "body": "f.![](/public/input_icons/S.png) CH > IAD j![](/public/input_icons/P.png)![](/public/input_icons/K.png)![](/public/input_icons/S.png) > c.![](/public/input_icons/S.png)  > ![](/public/input_icons/2.png)![](/public/input_icons/H.png)(1) > ![](/public/input_icons/4.png)![](public/input_icons/6.png)![](public/input_icons/P.png)![](public/input_icons/K.png)",
       "media": {
         "type": "video/webm",
         "source": "videos/Jam/fS1.webm"
@@ -110,7 +110,7 @@
     },
     {
       "header": "2D RRC",
-      "body": "2D > RRC > cS > fS > 2H(1) > 46PK",
+      "body": "![](/public/input_icons/2.png)![](/public/input_icons/D.png) > RRC > c.![](/public/input_icons/S.png) > f.![](/public/input_icons/S.png) > ![](/public/input_icons/2.png)![](/public/input_icons/H.png)(1) > ![](/public/input_icons/4.png)![](public/input_icons/6.png)![](public/input_icons/P.png)![](public/input_icons/K.png)",
       "media": {
         "type": "video/webm",
         "source": "videos/Jam/2D1.webm"
@@ -119,7 +119,7 @@
     },
     {
       "header": "Puffball Super",
-      "body": "Renhoukyaku > 5P > cS > 5H(1) > 2H(1) > 46PK",
+      "body": "Renhoukyaku > ![](/public/input_icons/5.png)![](/public/input_icons/P.png) > c.![](/public/input_icons/S.png) > ![](/public/input_icons/5.png)![](/public/input_icons/H.png)(1) > ![](/public/input_icons/2.png)![](/public/input_icons/H.png)(1) > ![](/public/input_icons/4.png)![](public/input_icons/6.png)![](public/input_icons/P.png)![](public/input_icons/K.png)",
       "media": {
         "type": "video/webm",
         "source": "videos/Jam/PuffSuper.webm"

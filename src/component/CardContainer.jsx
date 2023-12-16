@@ -17,7 +17,7 @@ export default function CardContainer() {
       <SearchBar />
       <div className="cardContainer">
         {filteredCards && filteredCards.length > 0 && (
-          <Masonry columns={filteredCards.length === 1 ? 1 : 3} spacing={3}>
+          <Masonry columns={filteredCards.length < 3 ? filteredCards.length : 3} spacing={3}>
             {filteredCards.map((card, index) => {
               return (
                 <Card card={card} key={card.header + index} order={index} />
