@@ -19,7 +19,8 @@ function App() {
   }, []);
 
   return (
-    <main>
+    <main className='PageBody'>
+      <h1>The Backyard Index</h1>
       <CardContainer/>
     </main>
   );
