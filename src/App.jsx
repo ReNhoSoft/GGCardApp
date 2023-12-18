@@ -20,7 +20,7 @@ function App() {
 
   return (
     <main className='PageBody'>
-      <h1>The Backyard Index</h1>
+      <h1>Jam's Kitchen</h1>
       <CardContainer/>
     </main>
   );
