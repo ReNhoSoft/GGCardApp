@@ -1,8 +1,8 @@
 import { useState } from "react";
-import CardTag from "./CardTag";
+import CardTag from "../CardTag";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import CmdInputMarkdown from "./CmdInputMarkdown";
+import classes from "./Card.module.css"
 
 export default function Card({card}) {
   const [showVideo, setShowVideo] = useState(false);
@@ -18,12 +18,15 @@ export default function Card({card}) {
         {/* <CmdInputMarkdown input={card.body}/> */}
         {!showVideo && card.media && <button onClick={() => setShowVideo(true)} >Show Video</button> }
         {showVideo && card.media && (
-          <video muted={true} controls={false} autoPlay={true} loop={true}>
-            <source
-              src={card.media.source}
-              type={card.media.type}
-            />
-          </video>
+          <div className={classes.videoContainer}>
+            <video muted={true} controls={false} autoPlay={true} loop={true}>
+              <source
+                src={card.media.source}
+                type={card.media.type}
+              />
+            </video>
+            <button class={classes.close} onClick ={() => setShowVideo(false)}>Close</button>
+          </div>
         )}
       </div>
       <div className="tags">

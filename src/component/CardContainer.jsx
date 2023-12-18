@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react'
 import Masonry from '@mui/lab/Masonry';
-import Card from './Card';
+import Card from './card/Card';
 import _ from 'lodash';
 import SearchBar from './searchBar/SearchBar';
 import { useSelector } from 'react-redux';
