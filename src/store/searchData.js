@@ -2,7 +2,7 @@ import { configureStore, createSlice } from "@reduxjs/toolkit";
 import _ from "lodash";
 const initialState = {
   searchTags: [],
-  cards: []
+  techItems: []
 };
 
 const clearTag = (tag) => {
@@ -30,8 +30,8 @@ const searchTagsSlice = createSlice({
     clear(state) {
       state.searchTags = [];
     },
-    setCards(state, action) {
-      state.cards = action.payload;
+    setTechItems(state, action) {
+      state.techItems = action.payload;
     }
   },
 });

@@ -1,9 +1,10 @@
-import './App.css'
-import _ from 'lodash';
-import CardContainer from './component/CardContainer';
-import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { searchActions } from './store/searchData';
+import TechContainer from './tableLayout/techContainer/TechContainer';
+import _ from 'lodash'
+import './App.css'
+
 
 function App() {
   const dispatcher = useDispatch();
@@ -14,16 +15,17 @@ function App() {
         return rawFile.json();
       })
       .then((data) => {
-        dispatcher(searchActions.setCards(_.clone(data.cards)));
+        dispatcher(searchActions.setTechItems(_.clone(data.techItems)));
       });
   }, []);
 
   return (
-    <main className='PageBody'>
-      <h1>Jam's Kitchen</h1>
-      <CardContainer/>
-    </main>
-  );
+    <>
+     <h1 style={{textAlign:"center"}}>Neutral Tech</h1>
+     <h6 style={{textAlign:"center", marginTop:"-1.5rem"}}>a fighting game tech database</h6>
+     <TechContainer/>
+    </>
+  )
 }
 
 export default App

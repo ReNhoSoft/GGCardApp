@@ -1,147 +1,44 @@
 {
-  "cards": [
+  "techItems": [
     {
-      "header": "Grab",
-      "body": "Throw > ![](/public/input_icons/4.png)![](public/input_icons/6.png)![](public/input_icons/P.png)![](public/input_icons/K.png)",
+      "id": "1",
+      "game": "Guilty Gear Xrd",
+      "type": "Combo",
+      "character": "Kuradoberi Jam",
+      "description": "Throw > ![](/public/input_icons/4.png)![](public/input_icons/6.png)![](public/input_icons/P.png)![](public/input_icons/K.png)![](/public/input_icons/4.png)![](public/input_icons/6.png)![](public/input_icons/P.png)![](public/input_icons/K.png)![](/public/input_icons/4.png)![](public/input_icons/6.png)![](public/input_icons/P.png)![](public/input_icons/K.png)![](/public/input_icons/4.png)![](public/input_icons/6.png)![](public/input_icons/P.png)![](public/input_icons/K.png)![](/public/input_icons/4.png)![](public/input_icons/6.png)![](public/input_icons/P.png)![](public/input_icons/K.png)",
+      "vs": "Potemkin",
+      "title": "fS Starter",
       "media": {
-        "type": "video/webm",
-        "source": "videos/Jam/Throw1.webm"
+        "type": "youtube",
+        "source": "https://www.youtube.com/embed/tgbNymZ7vqY"
       },
-      "tags": ["Potemkin", "PK Route", "Throw", "Meterless"]
+      "tags": [ {
+        "type":"difficulty",
+        "value":"Novice"
+      }, {
+        "type":"custom",
+        "values":  ["PK Route", "Throw", "Meterless"]
+      }]
     },
     {
-      "header": "Grab",
-      "body": "Throw > ![](/public/input_icons/2.png)![](/public/input_icons/H.png) (1) > ![](/public/input_icons/4.png)![](public/input_icons/6.png)![](public/input_icons/P.png)![](public/input_icons/K.png)",
+      "id": "2",
+      "game": "Guilty Gear Xrd",
+      "type": "Combo",
+      "character": "Kuradoberi Jam",
+      "description": "Throw > ![](/public/input_icons/4.png)![](public/input_icons/6.png)![](public/input_icons/P.png)![](public/input_icons/K.png)![](/public/input_icons/4.png)![](public/input_icons/6.png)![](public/input_icons/P.png)![](public/input_icons/K.png)![](/public/input_icons/4.png)![](public/input_icons/6.png)![](public/input_icons/P.png)![](public/input_icons/K.png)![](/public/input_icons/4.png)![](public/input_icons/6.png)![](public/input_icons/P.png)![](public/input_icons/K.png)![](/public/input_icons/4.png)![](public/input_icons/6.png)![](public/input_icons/P.png)![](public/input_icons/K.png)",
+      "vs": "Potemkin",
+      "title": "fS CH Starter",
       "media": {
-        "type": "video/webm",
-        "source": "videos/Jam/Throw2.webm"
+        "type": "twitter",
+        "source": "1737641557854232909"
       },
-      "tags": ["Potemkin", "PK Route", "Throw", "Meterless"]
-    },
-    {
-      "header": "Grab",
-      "body": "Throw > RRC > Card > c.![](/public/input_icons/S.png) > f.![](/public/input_icons/S.png) > ![](/public/input_icons/2.png)![](/public/input_icons/H.png)(1) > ![](/public/input_icons/4.png)![](public/input_icons/6.png)![](public/input_icons/P.png)![](public/input_icons/K.png)",
-      "media": {
-        "type": "video/webm",
-        "source": "videos/Jam/Throw3.webm"
-      },
-      "tags": ["Potemkin", "PK Route", "Throw", "RRC"]
-    },
-    {
-      "header": "Grab",
-      "body": "Throw > RRC > Card > c.![](/public/input_icons/S.png) > ![](/public/input_icons/6.png)![](/public/input_icons/P.png) > ![](/public/input_icons/2.png)![](/public/input_icons/H.png)(1) > ![](/public/input_icons/4.png)![](public/input_icons/6.png)![](public/input_icons/P.png)![](public/input_icons/K.png)",
-      "media": {
-        "type": "video/webm",
-        "source": "videos/Jam/Throw4.webm"
-      },
-      "tags": ["Potemkin", "PK Route", "Throw", "RRC"]
-    },
-    {
-      "header": "Carded Gekirin",
-      "body": "Carded Gekirin > c.![](/public/input_icons/S.png)  > f.![](/public/input_icons/S.png)  > ![](/public/input_icons/2.png)![](/public/input_icons/H.png)(1) > ![](/public/input_icons/4.png)![](public/input_icons/6.png)![](public/input_icons/P.png)![](public/input_icons/K.png)",
-      "media": {
-        "type": "video/webm", 
-        "source": "videos/Jam/CGekirin1.webm"
-      },
-      "tags": ["Potemkin", "PK Route", "Gekirin", "Meterless", "Carded Gekirin"]
-    },
-    {
-      "header": "Puffball CH",
-      "body": "Puffball CH > c![](/public/input_icons/S.png) > ![](/public/input_icons/6.png)![](/public/input_icons/P.png) > ![](/public/input_icons/5.png)![](/public/input_icons/H.png) > ![](/public/input_icons/2.png)![](/public/input_icons/H.png)(1) > ![](/public/input_icons/4.png)![](public/input_icons/6.png)![](public/input_icons/P.png)![](public/input_icons/K.png)",
-      "media": {
-        "type": "video/webm",
-        "source": "videos/Jam/Puffball1.webm"
-      },
-      "tags": ["Potemkin", "PK Route", "Puffball", "Counterhit", "Meterless"]
-    },
-    {
-      "header": "Puffball CH",
-      "body": "Puffball CH > c.![](/public/input_icons/S.png) > ![](/public/input_icons/2.png)![](/public/input_icons/S.png) > ![](/public/input_icons/5.png)![](/public/input_icons/H.png) (1) > ![](/public/input_icons/4.png)![](public/input_icons/6.png)![](public/input_icons/P.png)![](public/input_icons/K.png)",
-      "media": {
-        "type": "video/webm",
-        "source": "videos/Jam/Puffball1.webm"
-      },
-      "tags": ["Potemkin", "PK Route", "Puffball", "Counterhit", "Meterless"]
-    },
-    {
-      "header": "Puffball CH",
-      "body": "Puffball CH > ![](/public/input_icons/6.png)[](/public/input_icons/K.png) > ![](/public/input_icons/2.png)![](/public/input_icons/H.png) > ![](/public/input_icons/4.png)![](public/input_icons/6.png)![](public/input_icons/P.png)![](public/input_icons/K.png)",
-      "media": {
-        "type": "video/webm",
-        "source": "videos/Jam/Puffball3.webm"
-      },
-      "tags": ["Potemkin", "PK Route", "Puffball", "Counterhit", "Meterless"]
-    },
-    {
-      "header": "Puffball CH",
-      "body": "Puffball CH > c.![](/public/input_icons/S.png) > f.![](/public/input_icons/S.png) > ![](/public/input_icons/2.png)![](/public/input_icons/H.png)(1) > ![](/public/input_icons/4.png)![](public/input_icons/6.png)![](public/input_icons/P.png)![](public/input_icons/K.png)",
-      "media": {
-        "type": "video/webm",
-        "source": "videos/Jam/Puffball4.webm"
-      },
-      "tags": ["Potemkin", "PK Route", "Puffball", "Counterhit", "Meterless"]
-    },
-    {
-      "header": "IAD DP",
-      "body": "IAD DP > ![](/public/input_icons/2.png)![](/public/input_icons/S.png) > ![](/public/input_icons/2.png)![](/public/input_icons/H.png)(1) > ![](/public/input_icons/4.png)![](public/input_icons/6.png)![](public/input_icons/P.png)![](public/input_icons/K.png)",
-      "media": {
-        "type": "video/webm",
-        "source": "videos/Jam/IADDP1.webm"
-      },
-      "tags": ["Potemkin", "PK Route", "DP", "Meterless"]
-    },
-    {
-      "header": "IAD DP",
-      "body": "IAD DP > c.![](/public/input_icons/S.png) > ![](/public/input_icons/2.png)![](/public/input_icons/H.png) > ![](/public/input_icons/4.png)![](public/input_icons/6.png)![](public/input_icons/P.png)![](public/input_icons/K.png)",
-      "media": {
-        "type": "video/webm",
-        "source": "videos/Jam/IADDP2.webm"
-      },
-      "tags": ["Potemkin", "PK Route", "DP", "Meterless"]
-    },
-    {
-      "header": "fS CH",
-      "body": "f.![](/public/input_icons/S.png) CH > IAD j![](/public/input_icons/P.png)![](/public/input_icons/K.png)![](/public/input_icons/S.png) > c.![](/public/input_icons/S.png)  > ![](/public/input_icons/2.png)![](/public/input_icons/H.png)(1) > ![](/public/input_icons/4.png)![](public/input_icons/6.png)![](public/input_icons/P.png)![](public/input_icons/K.png)",
-      "media": {
-        "type": "video/webm",
-        "source": "videos/Jam/fS1.webm"
-      },
-      "tags": ["Potemkin", "PK Route", "Meterless", "fS", "Counterhit"]
-    },
-    {
-      "header": "2D RRC",
-      "body": "![](/public/input_icons/2.png)![](/public/input_icons/D.png) > RRC > c.![](/public/input_icons/S.png) > f.![](/public/input_icons/S.png) > ![](/public/input_icons/2.png)![](/public/input_icons/H.png)(1) > ![](/public/input_icons/4.png)![](public/input_icons/6.png)![](public/input_icons/P.png)![](public/input_icons/K.png)",
-      "media": {
-        "type": "video/webm",
-        "source": "videos/Jam/2D1.webm"
-      },
-      "tags": ["Potemkin", "PK Route", "Meterless", "2D", "RRC"]
-    },
-    {
-      "header": "Puffball Super",
-      "body": "Renhoukyaku > ![](/public/input_icons/5.png)![](/public/input_icons/P.png) > c.![](/public/input_icons/S.png) > ![](/public/input_icons/5.png)![](/public/input_icons/H.png)(1) > ![](/public/input_icons/2.png)![](/public/input_icons/H.png)(1) > ![](/public/input_icons/4.png)![](public/input_icons/6.png)![](public/input_icons/P.png)![](public/input_icons/K.png)",
-      "media": {
-        "type": "video/webm",
-        "source": "videos/Jam/PuffSuper.webm"
-      },
-      "tags": [
-        "Potemkin",
-        "PK Route",
-        "Meterless",
-        "2D",
-        "Renhoukyaku",
-        "Super"
-      ]
-    },
-    {
-      "header": "How do you do Jam's kick specials immediately out of the command dash?",
-      "body": " Kara cancel from the 236SK. Jam's 236SK can be cancelled into Ryujin, Kenroukaku, or Gekirin at any time during startup, active, or recovery, even if it whiffs.",
-      "tags": ["Kuradoberi Jam", "Character", "FAQ"]
-    },
-    {
-      "header": "Sometimes I see Jam go downwards with her DP in the air, what's going on?",
-      "body": "A: Jam has utilized a momentum glitch with her air specials since her first appearance in GGX. By performing the special move DURING the airdash movement, their movement is affected.\n* Ryujin drops slowly down. It's mostly useless, and you don't want to do this.\n* Gekirin drops straight down instead of jumping in an arc. This is very effective, much safer, and starts good combos. You can cross up with this as well.\n* Kenroukaku also falls down instead of rising. With a charged kenroukaku, you can use this as a very strong left/right mixup during okizeme, and continue a full combo out of it.\n* If you're having trouble doing these, and seeing Jam perform the special moves as they act outside of an airdash, you're doing them too slow. The special move must execute DURING the airdash, not after.",
-      "tags": ["Kuradoberi Jam", "Character", "FAQ", "Matchup"]
+      "tags": [ {
+        "type":"difficulty",
+        "value":"Novice"
+      }, {
+        "type":"custom",
+        "values":  ["PK Route", "Throw", "Meterless"]
+      }]
     }
   ]
 }

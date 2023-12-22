@@ -1,0 +1,12 @@
+.showMediaButton {
+    border:1pt solid white;
+    border-radius: 2pt;
+    background-color: white;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    text-align: center;
+}
+
+.mediaRow {
+    text-align: center;
+}
