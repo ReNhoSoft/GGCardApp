@@ -1,6 +1,5 @@
 import { useSelector } from "react-redux";
-import { filterTags } from "../../store/utils";
-import { useState } from "react";
+import { filterTags } from "../../utils";
 import TechItem from "../TechItem";
 import classes from "./TechContainer.module.css";
 import SearchBar from "../searchBar/SearchBar";
@@ -10,6 +9,7 @@ export default function TechContainer({ layout = "table" }) {
   const searchTags = useSelector((state) => state.tags.searchTags);
 
   const filteredItems = filterTags(techItems, searchTags);
+  const layoutHeaders = ["game", "type", "character", "vs", "title", "difficulty", "custom"];
 
   return (
     <>
@@ -19,20 +19,14 @@ export default function TechContainer({ layout = "table" }) {
           <table>
             <thead>
               <tr>
-                <th>Game</th>
-                <th>Type</th>
-                <th>Character</th>
-                <th>VS</th>
-                <th>Title</th>
-                <th>Difficulty</th>
+                {layoutHeaders.map((header) => {
+                  return <th>{header}</th>
+                })}
               </tr>
             </thead>
             <tbody>
               {filteredItems.map((item, index) => {
-                return <TechItem key={item + index} techItem={item} />;
-              })}
-              {filteredItems.map((item, index) => {
-                return <TechItem key={item + index} techItem={item} />;
+                return <TechItem key={item + index} techItem={item} layout={layoutHeaders}/>;
               })}
             </tbody>
           </table>

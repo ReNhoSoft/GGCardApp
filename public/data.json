@@ -1,44 +1,103 @@
 {
   "techItems": [
     {
-      "id": "1",
-      "game": "Guilty Gear Xrd",
-      "type": "Combo",
-      "character": "Kuradoberi Jam",
-      "description": "Throw > ![](/public/input_icons/4.png)![](public/input_icons/6.png)![](public/input_icons/P.png)![](public/input_icons/K.png)![](/public/input_icons/4.png)![](public/input_icons/6.png)![](public/input_icons/P.png)![](public/input_icons/K.png)![](/public/input_icons/4.png)![](public/input_icons/6.png)![](public/input_icons/P.png)![](public/input_icons/K.png)![](/public/input_icons/4.png)![](public/input_icons/6.png)![](public/input_icons/P.png)![](public/input_icons/K.png)![](/public/input_icons/4.png)![](public/input_icons/6.png)![](public/input_icons/P.png)![](public/input_icons/K.png)",
-      "vs": "Potemkin",
-      "title": "fS Starter",
+      "id": "0",
       "media": {
         "type": "youtube",
         "source": "https://www.youtube.com/embed/tgbNymZ7vqY"
       },
-      "tags": [ {
-        "type":"difficulty",
-        "value":"Novice"
-      }, {
-        "type":"custom",
-        "values":  ["PK Route", "Throw", "Meterless"]
-      }]
+      "description": "ASLDKMASL DKMD O QEPIUDLKJSDN CP(*# F",
+      "tags": [
+        {
+          "id": "tag0",
+          "category": "game",
+          "value": "Guilty Gear Xrd"
+        },
+        {
+          "id": "tag1",
+          "category": "type",
+          "value": "combo"
+        },
+        {
+          "id": "tag2",
+          "category": "character",
+          "value": "Kuradoberi Jam"
+        },
+        {
+          "id": "tag3",
+          "category": "vs",
+          "value": "Potemkin"
+        },
+        {
+          "id": "tag4",
+          "category": "title",
+          "value": "fS Starter"
+        },
+        {
+          "id": "tag5",
+          "category": "custom",
+          "value": "meterless"
+        },
+        {
+          "id": "tag6",
+          "category": "custom",
+          "value": "pk route"
+        },
+        {
+          "id": "tag7",
+          "category": "custom",
+          "value": "double puff"
+        }
+      ]
     },
     {
-      "id": "2",
-      "game": "Guilty Gear Xrd",
-      "type": "Combo",
-      "character": "Kuradoberi Jam",
-      "description": "Throw > ![](/public/input_icons/4.png)![](public/input_icons/6.png)![](public/input_icons/P.png)![](public/input_icons/K.png)![](/public/input_icons/4.png)![](public/input_icons/6.png)![](public/input_icons/P.png)![](public/input_icons/K.png)![](/public/input_icons/4.png)![](public/input_icons/6.png)![](public/input_icons/P.png)![](public/input_icons/K.png)![](/public/input_icons/4.png)![](public/input_icons/6.png)![](public/input_icons/P.png)![](public/input_icons/K.png)![](/public/input_icons/4.png)![](public/input_icons/6.png)![](public/input_icons/P.png)![](public/input_icons/K.png)",
-      "vs": "Potemkin",
-      "title": "fS CH Starter",
+      "id": "1",
       "media": {
         "type": "twitter",
-        "source": "1737641557854232909"
+        "source": "1734385076522344881"
       },
-      "tags": [ {
-        "type":"difficulty",
-        "value":"Novice"
-      }, {
-        "type":"custom",
-        "values":  ["PK Route", "Throw", "Meterless"]
-      }]
+      "tags": [
+        {
+          "id": "tag0",
+          "category": "game",
+          "value": "Guilty Gear Xrd"
+        },
+        {
+          "id": "tag1",
+          "category": "type",
+          "value": "combo"
+        },
+        {
+          "id": "tag2",
+          "category": "character",
+          "value": "Sol Badguy"
+        },
+        {
+          "id": "tag3",
+          "category": "vs",
+          "value": "Faust"
+        },
+        {
+          "id": "tag4",
+          "category": "title",
+          "value": "fS Starter"
+        },
+        {
+          "id": "tag5",
+          "category": "custom",
+          "value": "meterless"
+        },
+        {
+          "id": "tag6",
+          "category": "custom",
+          "value": "pk route"
+        },
+        {
+          "id": "tag7",
+          "category": "custom",
+          "value": "double puff"
+        }
+      ]
     }
   ]
 }

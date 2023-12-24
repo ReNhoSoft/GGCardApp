@@ -2,6 +2,7 @@ import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { Tweet } from "react-twitter-widgets";
 export default function TechItemMedia({media, description}) {
+  console.log(description)
     return (
       <tr>
         <td colSpan={2} style={{ textAlign: "right" }}>

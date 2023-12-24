@@ -1,23 +1,10 @@
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { searchActions } from './store/searchData';
 import TechContainer from './tableLayout/techContainer/TechContainer';
-import _ from 'lodash'
 import './App.css'
+import { loadDataFromServer } from './httphelper';
 
 
 function App() {
-  const dispatcher = useDispatch();
-
-  useEffect(() => {
-    fetch("../data.json")
-      .then((rawFile) => {
-        return rawFile.json();
-      })
-      .then((data) => {
-        dispatcher(searchActions.setTechItems(_.clone(data.techItems)));
-      });
-  }, []);
+  loadDataFromServer();
 
   return (
     <>
