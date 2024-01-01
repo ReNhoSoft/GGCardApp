@@ -1,8 +1,11 @@
-# React + Vite
+# Neutral Tech
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Simple fighting game tech database built using React and AWS. 
 
-Currently, two official plugins are available:
+You can visit the app here
+http://renhosoft.net.jamskitchen.s3-website-us-east-1.amazonaws.com/index.html
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Deployment
+
+To update the backend, navigate to the backend folder and run deploy.bat
+To update the frontend, run deploy.bat from the main folder

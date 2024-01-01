@@ -1,0 +1,16 @@
+.mainContainer {
+    text-align: center;
+    align-content: center;
+    margin:auto;
+}
+
+table {
+    width: var(--width-lg);
+    margin:auto;
+    border-collapse: collapse;
+}
+
+tr {
+    border-bottom: 1pt solid white;
+}
+

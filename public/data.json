@@ -1,0 +1,103 @@
+{
+  "techItems": [
+    {
+      "id": "0",
+      "media": {
+        "type": "youtube",
+        "source": "https://www.youtube.com/embed/tgbNymZ7vqY"
+      },
+      "description": "ASLDKMASL DKMD O QEPIUDLKJSDN CP(*# F",
+      "tags": [
+        {
+          "id": "tag0",
+          "category": "game",
+          "value": "Guilty Gear Xrd"
+        },
+        {
+          "id": "tag1",
+          "category": "type",
+          "value": "combo"
+        },
+        {
+          "id": "tag2",
+          "category": "character",
+          "value": "Kuradoberi Jam"
+        },
+        {
+          "id": "tag3",
+          "category": "vs",
+          "value": "Potemkin"
+        },
+        {
+          "id": "tag4",
+          "category": "title",
+          "value": "fS Starter"
+        },
+        {
+          "id": "tag5",
+          "category": "custom",
+          "value": "meterless"
+        },
+        {
+          "id": "tag6",
+          "category": "custom",
+          "value": "pk route"
+        },
+        {
+          "id": "tag7",
+          "category": "custom",
+          "value": "double puff"
+        }
+      ]
+    },
+    {
+      "id": "1",
+      "media": {
+        "type": "twitter",
+        "source": "1734385076522344881"
+      },
+      "tags": [
+        {
+          "id": "tag0",
+          "category": "game",
+          "value": "Guilty Gear Xrd"
+        },
+        {
+          "id": "tag1",
+          "category": "type",
+          "value": "combo"
+        },
+        {
+          "id": "tag2",
+          "category": "character",
+          "value": "Sol Badguy"
+        },
+        {
+          "id": "tag3",
+          "category": "vs",
+          "value": "Faust"
+        },
+        {
+          "id": "tag4",
+          "category": "title",
+          "value": "fS Starter"
+        },
+        {
+          "id": "tag5",
+          "category": "custom",
+          "value": "meterless"
+        },
+        {
+          "id": "tag6",
+          "category": "custom",
+          "value": "pk route"
+        },
+        {
+          "id": "tag7",
+          "category": "custom",
+          "value": "double puff"
+        }
+      ]
+    }
+  ]
+}

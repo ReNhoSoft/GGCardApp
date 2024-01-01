@@ -1,29 +1,18 @@
+import TechContainer from './tableLayout/techContainer/TechContainer';
 import './App.css'
-import _ from 'lodash';
-import CardContainer from './component/CardContainer';
-import { useDispatch } from 'react-redux';
-import { useEffect } from 'react';
-import { searchActions } from './store/searchData';
+import { loadDataFromServer } from './helpers/fetcher';
+
 
 function App() {
-  const dispatcher = useDispatch();
-
-  useEffect(() => {
-    fetch("../data.json")
-      .then((rawFile) => {
-        return rawFile.json();
-      })
-      .then((data) => {
-        dispatcher(searchActions.setCards(_.clone(data.cards)));
-      });
-  }, []);
+  loadDataFromServer();
 
   return (
-    <main className='PageBody'>
-      <h1>The Backyard Index</h1>
-      <CardContainer/>
-    </main>
-  );
+    <>
+     <h1 style={{textAlign:"center"}}>Neutral Tech</h1>
+     <h6 style={{textAlign:"center", marginTop:"-1.5rem"}}>a fighting game tech database</h6>
+     <TechContainer/>
+    </>
+  )
 }
 
 export default App
