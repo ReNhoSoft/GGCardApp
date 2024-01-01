@@ -19,9 +19,9 @@ export default function TechItem({techItem, layout}) {
           })
         }
       >
-        {layout.map(category => {
-          return <td> {techItem.tags[category]?.map(tag => {
-            return <div>{tag}</div>
+        {layout.map((category, index) => {
+          return <td key={techItem.name+index}> {techItem.tags[category]?.map((tag, index) => {
+            return <div key={index}>{tag}</div>
           })} </td>
         })}
       </tr>

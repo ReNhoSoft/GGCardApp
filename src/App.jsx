@@ -1,6 +1,6 @@
 import TechContainer from './tableLayout/techContainer/TechContainer';
 import './App.css'
-import { loadDataFromServer } from './httphelper';
+import { loadDataFromServer } from './helpers/fetcher';
 
 
 function App() {

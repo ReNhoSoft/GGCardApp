@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@aws-sdk/client-dynamodb": "^3.478.0",
+    "@aws-sdk/lib-dynamodb": "^3.481.0",
     "@reduxjs/toolkit": "^2.0.1",
     "lodash": "^4.17.21",
     "react": "^18.2.0",

@@ -19,8 +19,8 @@ export default function TechContainer({ layout = "table" }) {
           <table>
             <thead>
               <tr>
-                {layoutHeaders.map((header) => {
-                  return <th>{header}</th>
+                {layoutHeaders.map((header, index) => {
+                  return <th key={index}>{header}</th>
                 })}
               </tr>
             </thead>
