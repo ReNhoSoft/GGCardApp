@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { searchActions } from "../store/searchData";
-import { getTechItemsByTag } from "../../backend/techItemService";
+import { getTechItemsByTag } from "../../backend/routes/techItemTags/techItemTagService";
 
 export function loadDataFromServer() {
   const dispatcher = useDispatch();

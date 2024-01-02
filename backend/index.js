@@ -1,4 +1,4 @@
-import resources from "./resources.js";
+import routes from "./routes/routes.js";
 
 async function handler(event) {
   try {
@@ -10,7 +10,7 @@ async function handler(event) {
       return generateResponse(404, "Invalid input", { httpMethod, path });
     }
 
-    const resource = resources[path.split("/")[1].toLowerCase()];
+    const resource = routes[path.split("/")[1].toLowerCase()];
     if (!resource) {
         console.log("Cant find requested resource");
         return generateResponse(404, "Cant find requested resource", {

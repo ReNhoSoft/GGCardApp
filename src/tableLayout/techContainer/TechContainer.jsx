@@ -2,7 +2,6 @@ import { useSelector } from "react-redux";
 import { filterTags } from "../../utils";
 import TechItem from "../TechItem";
 import classes from "./TechContainer.module.css";
-import SearchBar from "../searchBar/SearchBar";
 
 export default function TechContainer({ layout = "table" }) {
   const techItems = useSelector((state) => state.tags.techItems);
@@ -13,7 +12,6 @@ export default function TechContainer({ layout = "table" }) {
 
   return (
     <>
-      <SearchBar/>
       <div className={classes.mainContainer}>
         {filteredItems && filteredItems.length > 0 && (
           <table>

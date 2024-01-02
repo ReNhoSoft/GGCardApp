@@ -1,0 +1,29 @@
+{
+  "version": "2.0",
+  "routeKey": "$default",
+  "rawPath": "/techItem",
+  "rawQueryString": "parameter1=value1&parameter1=value2&parameter2=value",
+  "requestContext": {
+    "path": "/techItem",
+    "httpMethod": "GET"
+  },
+  "cookies": ["cookie1", "cookie2"],
+  "headers": {
+    "Header1": "value1",
+    "Header2": "value1,value2"
+  },
+  "queryStringParameters": {
+    "category": "game",
+    "id": "0001"
+  },
+
+  "body": "eyJ0ZXN0IjoiYm9keSJ9",
+  "pathParameters": {
+    "parameter1": "value1"
+  },
+  "isBase64Encoded": true,
+  "stageVariables": {
+    "stageVariable1": "value1",
+    "stageVariable2": "value2"
+  }
+}
