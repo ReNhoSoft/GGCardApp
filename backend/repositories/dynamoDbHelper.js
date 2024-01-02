@@ -1,5 +1,5 @@
 import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
-import { DynamoDBDocumentClient, GetCommand, QueryCommand, BatchGetCommand } from "@aws-sdk/lib-dynamodb";
+import { DynamoDBDocumentClient, GetCommand, QueryCommand, BatchGetCommand, PutCommand, UpdateCommand, DeleteCommand } from "@aws-sdk/lib-dynamodb";
 
 const client = new DynamoDBClient({});
 const docClient = DynamoDBDocumentClient.from(client);
@@ -55,7 +55,7 @@ const putTechItemTag = async (techItemTag) => {
     TableName: "tech-item-tags",
   });
   const response = await docClient.send(command);
-  if(response.httpStatusCode == 200) {
+  if(response.$metadata.httpStatusCode == 200) {
     return "Succesfully added item"
   }
   throw new Error("Unable to create item for unknown reasons");
@@ -68,14 +68,17 @@ const updateTechItemTag = async (techItemTag) => {
       category: techItemTag.category,
       name: techItemTag.name
     },
-    UpdateExpression: "set tech-items = :items",
+    UpdateExpression: "set #ti = :items",
+    ExpressionAttributeNames: {
+      "#ti":"tech-items"
+    },
     ExpressionAttributeValues: {
       ":items": techItemTag["tech-items"],
     },
   });
   const response = await docClient.send(command);
-  if(response.httpStatusCode == 200) {
-    return "Succesfully added item"
+  if(response.$metadata.httpStatusCode == 200) {
+    return "Succesfully updated item"
   }
 
   throw new Error("Unable to update item");
@@ -90,6 +93,9 @@ const deleteTechItemTag = async (techItemTag) => {
     },
   });
   const response = await docClient.send(command);
+  if(response.$metadata.httpStatusCode == 200) {
+    return "Succesfully deleted item"
+  }
 }
 
 const getTechItems = async (techItemIds) => {
@@ -134,7 +140,7 @@ const putTechItem = async (techItem) => {
     TableName: "tech-items",
   });
   const response = await docClient.send(command);
-  if(response.httpStatusCode == 200) {
+  if(response.$metadata.httpStatusCode == 200) {
     return "Succesfully added item"
   }
   throw new Error("Unable to create item for unknown reasons");
@@ -158,7 +164,7 @@ const updateTechItem = async (techItem) => {
     }
   });
   const response = await docClient.send(command);
-  if(response.httpStatusCode == 200) {
+  if(response.$metadata.httpStatusCode == 200) {
     return "Succesfully added item"
   }
   return;
@@ -172,6 +178,9 @@ const deleteTechItem = async (techItem) => {
     },
   });
   const response = await docClient.send(command);
+  if(response.$metadata.httpStatusCode == 200) {
+    return "Succesfully deleted item"
+  }
 }
 
 export {
