@@ -1,5 +1,5 @@
 import ShortUniqueId from "short-unique-id";
-import { putTechItem, queryTechItem } from "../../repositories/dynamoDbHelper.js";
+import { putTechItem, putTechItemTag, queryTechItem, queryTechItemsTag, updateTechItemTag } from "../../repositories/dynamoDbHelper.js";
 import { getTechItemsByTag } from "../techItemTags/techItemTagService.js";
 
 const uid = new ShortUniqueId({ length: 10 });
@@ -17,7 +17,7 @@ const getTechItem = async ({ id }) => {
 
 const createTechItem = async ({description, media, name, tags}) => {
   // Validate input
-  if(!(id && description && media && name && tags)) {
+  if(!(description && media && name && tags)) {
     throw Error("Missing required fields in parameters");
   }
   // Create new object with only the required properties
@@ -28,16 +28,23 @@ const createTechItem = async ({description, media, name, tags}) => {
     name,
     tags
   }
-  techItem.tags.forEach(tag => {
+
+  await techItem.tags.forEach(async tag => {
   // For each tag, validate if the mapping exists in tech-item-tags
-    const mappingDetails = getTechItemsByTag({ category:tag.category, name: tag.value});
+    const mappingDetails = await queryTechItemsTag({ category:tag.category, name: tag.value});
     if(mappingDetails) {
       // If it does, add a mapping to the new tech item
-      mappingDetails["tech-items"].push(id);
+      if(!mappingDetails["tech-items"].has(techItem.id)) {
+        mappingDetails["tech-items"].add(techItem.id);
+        updateTechItemTag(mappingDetails);
+      }
+    } else {
+      // else, create a new entry
+      putTechItemTag({ category: tag.category, name: tag.value });
     }
   });
-  const response1 = putTechItem(techItem);
-
+  
+  putTechItem(techItem);
 }
 
 export { getTechItem, createTechItem };

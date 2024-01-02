@@ -24,18 +24,22 @@ const getTechItemTagsByCategory = async (category) => {
   return null;
 };
 
-const queryTechItemsTag = async (category, name) => {
-  const command = new GetCommand({
+const queryTechItemsTag = async ({category, name}) => {
+  const command = new QueryCommand({
     TableName: "tech-item-tags",
-    Key: {
-      category: category,
-      name: name
+    KeyConditionExpression: "#name = :name and category = :category",
+    ExpressionAttributeNames: {
+      "#name": "name"
     },
+    ExpressionAttributeValues: {
+      ":name": name,
+      ":category": category
+    }
   });
   
   const response = await docClient.send(command);
-  if(response && response.Item) {
-    return response.Item;
+  if(response && response.Items && response.Items.length > 0) {
+    return response.Items[0];
   }
 
   return null;
@@ -43,7 +47,11 @@ const queryTechItemsTag = async (category, name) => {
 
 const putTechItemTag = async (techItemTag) => {
   const command = new PutCommand({
-    Item: techItemTag,
+    Item: {
+      category:techItemTag.category,
+      name: techItemTag.name,
+      "tech-items": techItemTag["tech-items"]
+    },
     TableName: "tech-item-tags",
   });
   const response = await docClient.send(command);
@@ -166,4 +174,15 @@ const deleteTechItem = async (techItem) => {
   const response = await docClient.send(command);
 }
 
-export { queryTechItemsTag, getTechItemTagsByCategory, getTechItems, queryTechItem, putTechItem, putTechItemTag }
+export {
+  queryTechItemsTag,
+  getTechItemTagsByCategory,
+  getTechItems,
+  queryTechItem,
+  putTechItem,
+  putTechItemTag,
+  updateTechItemTag,
+  updateTechItem,
+  deleteTechItem,
+  deleteTechItemTag,
+};
