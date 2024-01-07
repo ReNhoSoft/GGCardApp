@@ -26,4 +26,5 @@ const getTechItemsByTag = async ({category, name}) => {
     return await getTechItems(techItemIds);
 }
 
+
 export { getTechItemsByTag }

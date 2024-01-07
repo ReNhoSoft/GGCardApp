@@ -1,4 +1,4 @@
-import { configureStore, createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import _ from "lodash";
 const initialState = {
   searchTags: [],
@@ -10,7 +10,7 @@ const clearTag = (tag) => {
 }
 
 
-const searchTagsSlice = createSlice({
+export const searchTagsSlice = createSlice({
   name: "search",
   initialState,
   reducers: {
@@ -36,10 +36,5 @@ const searchTagsSlice = createSlice({
   },
 });
 
-const store = configureStore({
-  reducer: { tags: searchTagsSlice.reducer },
-});
 
 export const searchActions = searchTagsSlice.actions;
-
-export default store;

@@ -8,7 +8,11 @@ export default function TechContainer({ layout = "table" }) {
   const searchTags = useSelector((state) => state.tags.searchTags);
 
   const filteredItems = filterTags(techItems, searchTags);
-  const layoutHeaders = ["game", "type", "character", "vs", "title", "difficulty", "custom"];
+  const layoutHeaders = ["game", "type","character", "vs", "difficulty", "custom"];
+  const layoutValues = [...layoutHeaders];
+
+  layoutHeaders.splice(2,0,"name");
+  
 
   return (
     <>
@@ -24,7 +28,7 @@ export default function TechContainer({ layout = "table" }) {
             </thead>
             <tbody>
               {filteredItems.map((item, index) => {
-                return <TechItem key={item + index} techItem={item} layout={layoutHeaders}/>;
+                return <TechItem key={item + index} techItem={item} layout={layoutValues}/>;
               })}
             </tbody>
           </table>
