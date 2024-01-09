@@ -5,11 +5,15 @@ import TagDisplay from "./tagDisplay/TagDisplay";
 
 export default function TechItem({techItem, layout}) {
   const [displayMedia, setDisplayMedia] = useState(false);
-  console.log(techItem)
-  if(!techItem) {
-    console.warn("No item was provided to TechItem component");
-    return <></>;
-  }
+  
+  const tagsDisplay = layout.map((category, index) => {
+    return <td key={techItem.name+index}> {techItem.tags[category]?.map((tag, index) => {
+      return <div key={index}>{tag}</div>
+    })} </td>
+  })
+
+  tagsDisplay.splice(2, 0, <td>{techItem.name}</td>);
+  
   return (
     <>
       <tr
@@ -19,11 +23,7 @@ export default function TechItem({techItem, layout}) {
           })
         }
       >
-        {layout.map((category, index) => {
-          return <td key={techItem.name+index}> {techItem.tags[category]?.map((tag, index) => {
-            return <div key={index}>{tag}</div>
-          })} </td>
-        })}
+        {tagsDisplay}
       </tr>
       {displayMedia && (
         <>

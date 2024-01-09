@@ -1,16 +1,19 @@
-import resources from "./resources.js";
+import routes from "./routes/routes.js";
 
 async function handler(event) {
   try {
     console.log("Event:",event)
     const { httpMethod, path } = event.requestContext;
     const params = event.queryStringParameters;
-
+    const bodyContent = event.body ? JSON.parse(event.body) : null;
+    console.log(bodyContent);
     if (!httpMethod || !path) {
       return generateResponse(404, "Invalid input", { httpMethod, path });
     }
 
-    const resource = resources[path.split("/")[1].toLowerCase()];
+    const resourceName = path.split("/")[1].toLowerCase();
+    console.log(`Recieved request for resource ${resourceName} and method ${httpMethod}`);
+    const resource = routes[path.split("/")[1].toLowerCase()];
     if (!resource) {
         console.log("Cant find requested resource");
         return generateResponse(404, "Cant find requested resource", {
@@ -27,8 +30,7 @@ async function handler(event) {
         { httpMethod, path }
       );
     }
-    console.log("Executing action")
-    const result = await action(params);
+    const result = await action(params, bodyContent );
     console.log("Success", result);
     return generateResponse(200, "Success", result);
   } catch (error) {

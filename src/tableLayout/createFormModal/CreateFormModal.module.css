@@ -1,0 +1,32 @@
+dialog::backdrop {
+    background-color: #00000078;
+}
+
+.TagSelect {
+    flex: auto;
+    & select {
+        margin-left: 1rem;
+        align-self: flex-end;
+    }
+
+    & label {
+        align-self: flex-start;
+    }
+}
+
+.FormContainer {
+    display: block;
+}
+
+.Row {
+    display: flex;
+}
+
+input {
+    width: 100%;
+}
+
+textarea{
+    width: 100%;
+    min-height: 10rem;
+}

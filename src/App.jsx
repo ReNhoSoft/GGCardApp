@@ -1,16 +1,24 @@
 import TechContainer from './tableLayout/techContainer/TechContainer';
 import './App.css'
-import { loadDataFromServer } from './helpers/fetcher';
+import { loadDataFromServer } from './helpers/apiRequestHelper.js';
+import CreateFormModal from './tableLayout/createFormModal/CreateFormModal';
+import Header from './Header.jsx';
+import { useRef } from 'react';
 
 
 function App() {
   loadDataFromServer();
+  const formRef = useRef();
+  
+  function onClickAddItem(event) {
+    formRef.current.showModal();
+  }
 
   return (
     <>
-     <h1 style={{textAlign:"center"}}>Neutral Tech</h1>
-     <h6 style={{textAlign:"center", marginTop:"-1.5rem"}}>a fighting game tech database</h6>
+     <Header onClickAdd={onClickAddItem}/>
      <TechContainer/>
+     <CreateFormModal ref={formRef}/>
     </>
   )
 }

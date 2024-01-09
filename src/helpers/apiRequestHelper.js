@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { searchActions } from "../store/searchData";
-import { getTechItemsByTag } from "../../backend/techItemService";
+import { getTechItemsByTag } from "../../backend/routes/techItemTags/techItemTagService";
 
 export function loadDataFromServer() {
   const dispatcher = useDispatch();
@@ -36,17 +36,6 @@ function parseData(techItems) {
   return result;
 }
 
-async function loadDataFromFile() {
-  return fetch("../data.json")
-      .then((rawFile) => {
-        return rawFile.json();
-      })
-      .then((data) => {
-        let techItems = parseData(data.techItems);
-        return techItems;
-      });
-}
-
 async function loadDataFromAWS() {
   return fetch("https://neutraltech.renhosoft.net/techitemtags?category=game")
       .then((rawFile) => {
@@ -63,6 +52,9 @@ async function loadDataFromAWS() {
       });
 }
 
-async function loadDataFromDynamo() {
-  return getTechItemsByTag({category: "game"});
+export async function sendTechItem(techItem, method) {
+  return fetch("https://neutraltech.renhosoft.net/techitem", {
+    body: JSON.stringify(techItem),
+    method: method
+  }).then( (data) => console.log(data));
 }
