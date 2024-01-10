@@ -6,29 +6,22 @@ const initialState = {
   techItems: []
 };
 
-const clearTag = (tag) => {
-  return tag.toLowerCase().trim();
-}
-
 
 export const searchTagsSlice = createSlice({
   name: "search",
   initialState,
   reducers: {
-    add(state, action) {
-      let cleanTag = clearTag(action.payload);
-      if(state.searchTags.indexOf(cleanTag.toLowerCase()) < 0) {
-        state.searchTags.push(cleanTag.toLowerCase());
-      }
+    addTag(state, action) {
+      const newSearchTags = _.cloneDeep(state.searchTags);
+      newSearchTags.push(action.payload);
+      state.searchTags =  newSearchTags;
+      console.log("WTF");
+      console.log(state.searchTags);
     },
-    remove(state, action) {
-      let cleanTag = clearTag(action.payload);
-      state.searchTags = [
-        ...state.searchTags.slice(0, state.searchTags.indexOf(cleanTag)),
-        ...state.searchTags.slice(state.searchTags.indexOf(cleanTag)+1, state.searchTags.length),
-      ];
+    removeTag(state, action) {
+      // TODO: Implement removing Tags in reducer
     },
-    clear(state) {
+    clearTags(state) {
       state.searchTags = [];
     },
     addTechItem(state, action) {

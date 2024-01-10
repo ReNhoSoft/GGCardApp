@@ -1,16 +1,20 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { searchActions } from "../store/searchData";
-import { getTechItemsByTag } from "../../backend/routes/techItemTags/techItemTagService";
 
-export function loadDataFromServer() {
+export function useLoadDataFromServer(searchTags) {
+  const [isLoading, setIsLoading] = useState(false);
   const dispatcher = useDispatch();
-  useEffect(() => {
-    loadDataFromAWS().then( techItems => {
-      dispatcher(searchActions.setTechItems(techItems));
-    })
-  }, []);
 
+  useEffect(() => {
+    setIsLoading(true);
+    loadDataFromAWS(searchTags).then( techItems => {
+      dispatcher(searchActions.setTechItems(techItems));
+      setIsLoading(false);
+    })
+  }, [searchTags]);
+
+  return isLoading;
 }
 
 export function parseTechItemsData(techItems) {
@@ -39,8 +43,10 @@ export function parseTechItemsData(techItems) {
   return result;
 }
 
-async function loadDataFromAWS() {
-  return fetch("https://neutraltech.renhosoft.net/techitemtags?category=game")
+async function loadDataFromAWS(tags) {
+  // TODO: Finish implementing query string mapping
+  const queryStrings = tags ? tags.map(tag => `category=${tag.category}`).join("&") : "";
+  return fetch("https://neutraltech.renhosoft.net/techitemtags?"+queryStrings)
       .then((rawFile) => {
         return rawFile.json();
       })
