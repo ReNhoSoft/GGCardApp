@@ -8,6 +8,8 @@ import {
 } from "../../repositories/dynamoDbHelper.js";
 
 const uid = new ShortUniqueId({ length: 8 });
+const twitterRegex = /(?:http)(?:s)?:\/\/(x|twitter)\.com\/([A-Za-z0-9_]+)\/status\/([A-Za-z0-9]+)/;
+const youtubeRegex = /(http)(s)?:\/\/(www.)?youtube\.com\/watch\?v\=([A-Za-z0-9]+)/
 
 const getTechItem = async ({ id }) => {
   if (!id) {
@@ -25,6 +27,9 @@ const createTechItem = async (params, { description, media, name, tags }) => {
   console.log(description, media, name, tags);
   if (!(description && media && name && tags)) {
     throw Error("Missing required fields in parameters");
+  }
+  if(!(youtubeRegex.test(media.source) || twitterRegex.test(media.source))) {
+    throw Error("Media link provided is not valid");
   }
   // Create new object with only the required properties
   const techItem = {

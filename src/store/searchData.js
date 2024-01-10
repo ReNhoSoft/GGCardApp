@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import _ from "lodash";
+import { parseTechItemsData } from "../helpers/apiRequestHelper";
 const initialState = {
   searchTags: [],
   techItems: []
@@ -29,6 +30,12 @@ export const searchTagsSlice = createSlice({
     },
     clear(state) {
       state.searchTags = [];
+    },
+    addTechItem(state, action) {
+      const parsedPayload = parseTechItemsData([action.payload]);
+      const newTechItemsList = _.cloneDeep(state.techItems);
+      newTechItemsList.push(parsedPayload[0]);
+      state.techItems = newTechItemsList;
     },
     setTechItems(state, action) {
       state.techItems = action.payload;

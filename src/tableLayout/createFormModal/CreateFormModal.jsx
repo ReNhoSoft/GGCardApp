@@ -1,8 +1,9 @@
 import { useRef, useImperativeHandle, forwardRef, useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import classes from "./CreateFormModal.module.css"
 import { sendTechItem } from "../../helpers/apiRequestHelper";
-
+import { isMediaLinkValid, parseMediaLink, transformDropDownData } from "./CreateFormModal.util";
+import { searchActions } from "../../store/searchData";
 
 const CreateFormModal = forwardRef((props, ref) => {
 
@@ -11,34 +12,22 @@ const CreateFormModal = forwardRef((props, ref) => {
       return {
         showModal() {
           dialogRef.current.showModal();
+        },
+        hideModal() {
+          dialogRef.current.close();
         }
       };
     }, []);
 
     
+    // Declare hooks to be used elsewhere
     const formRef = useRef();
     const dialogRef = useRef();
     const staticData = useSelector(state => state.static);
+    const dispatcher = useDispatch();
+    const [dropDownData, setDropDownData] = useState(transformDropDownData(["Guilty Gear Xrd"], staticData));
 
-    const [gameSelected, setSelectedGame ] = useState (null);
-
-    function transformDropDownData(selectedItems = []) {
-      const result = {};
-      for(let i = 0; i< staticData.length; i++) {
-        const entry = staticData[i];
-        const values = [];
-        if(entry.type == "fixed") {
-          values.push(...entry.values.map(v => v.value));
-        } else if(entry.type == "dynamic") {
-          values.push(...entry.valueSets.filter(vs => !vs.dependsOn || selectedItems.includes(vs.dependsOn)).map(vs => vs.values.map(v => v.value)).flat(2));
-        }
-        result[entry.category] = values;
-      }
-      return result;
-    }
-
-    
-  
+    // Util functions
     const getFormProp = (propValue) => {
         return formRef?.current?.elements[propValue]?.value;
     } 
@@ -52,13 +41,16 @@ const CreateFormModal = forwardRef((props, ref) => {
 
     const onGameChanged = (event) => {
       const game = getFormProp("tiGame");
-      setSelectedGame(game);
+      setDropDownData(transformDropDownData([game], staticData));
     }
 
+    const onCancel = (event) => {
+      dialogRef.current.close();
+    }
 
-    const onSubmit = (event) => {
+    
+    const onSubmit = async (event) => {
         event.preventDefault();
-        console.log(getFormProp("tiDescription"));
         // Compile all the form details, create the object and send
         const name = getFormProp("tiName");
         const description = getFormProp("tiDescription");
@@ -71,10 +63,6 @@ const CreateFormModal = forwardRef((props, ref) => {
         const techItem = {
           name,
           description,
-          media: {
-            type: "youtube",
-            source: mediaValue
-          },
           tags: [
             createTag("game", game),
             createTag("character", character),
@@ -83,13 +71,22 @@ const CreateFormModal = forwardRef((props, ref) => {
             createTag("vs", vs)
           ]
         }
-        console.log(techItem);
-        sendTechItem(techItem, "POST");
+
+
+        // TODO: Display validation errors
+        if(!isMediaLinkValid(mediaValue)) {
+          
+          console.log("Invalid Media Link")
+          return;
+        }
+        techItem["media"] = parseMediaLink(mediaValue);
+        await sendTechItem(techItem, "POST");
+        dispatcher(searchActions.addTechItem(techItem));
+        
         formRef.current.reset();
+        dialogRef.current.close();
     }
     
-    const dropDownData = transformDropDownData(["Guilty Gear Xrd"]);
-    console.log("Dropdown data",dropDownData);
 
     return (
       <dialog ref={dialogRef}>
@@ -98,7 +95,7 @@ const CreateFormModal = forwardRef((props, ref) => {
             <div className={classes.Row}>
               <div className={classes.TagSelect}>
                 <label>Game</label>
-                <select title="game" name="tiGame">
+                <select title="game" name="tiGame" onChange={onGameChanged}>
                   {dropDownData.game.map((value, index) => (
                     <option key={value}>{value}</option>
                   ))}
@@ -162,6 +159,7 @@ const CreateFormModal = forwardRef((props, ref) => {
                 ></input>
               </div>
               <button onClick={onSubmit}>Submit</button>
+              <button onClick={onCancel}>Cancel</button>
             </div>
           </div>
         </form>

@@ -7,14 +7,17 @@ export function loadDataFromServer() {
   const dispatcher = useDispatch();
   useEffect(() => {
     loadDataFromAWS().then( techItems => {
-      console.log(techItems);
       dispatcher(searchActions.setTechItems(techItems));
     })
   }, []);
 
 }
 
-function parseData(techItems) {
+export function parseTechItemsData(techItems) {
+
+  if(!techItems || techItems.length == 0) {
+    return null;
+  }
 
   let result = [];
   techItems.forEach((techItem, index) => {
@@ -43,8 +46,7 @@ async function loadDataFromAWS() {
       })
       .then((data) => {
         if(data.message == "Success") {
-          console.log(data.data)
-          let techItems = parseData(data.data["tech-items"]);
+          let techItems = parseTechItemsData(data.data["tech-items"]);
           return techItems;
         } else {
           // TODO: Add error handling for data loading
