@@ -28,9 +28,7 @@ const createTechItem = async (params, { description, media, name, tags }) => {
   if (!(description && media && name && tags)) {
     throw Error("Missing required fields in parameters");
   }
-  if(!(youtubeRegex.test(media.source) || twitterRegex.test(media.source))) {
-    throw Error("Media link provided is not valid");
-  }
+ 
   // Create new object with only the required properties
   const techItem = {
     id: uid.rnd(),
@@ -40,27 +38,30 @@ const createTechItem = async (params, { description, media, name, tags }) => {
     tags,
   };
 
-  await techItem.tags.forEach(async (tag) => {
+  for(let i=0; i<techItem.tags.length; i++) {
+    const tag = techItem.tags[i];
+
     // For each tag, validate if the mapping exists in tech-item-tags
-    console.log(`Validating tag exists: ${tag.category} ${tag.value}`);
+    console.log(`Validating tag exists: ${tag.category} : ${tag.value}`);
+
     const newTag = { category: tag.category, name: tag.value };
-    const mappingDetails = await queryTechItemsTag(newTag);
+    const mappingDetails = await queryTechItemsTag(newTag.category, newTag.name);
     if (mappingDetails) {
       // If it does, add a mapping to the new tech item
       console.log("Tag exists, updating mapping");
       if (!mappingDetails["tech-items"].has(techItem.id)) {
         mappingDetails["tech-items"].add(techItem.id);
-        updateTechItemTag(mappingDetails);
+        await updateTechItemTag(mappingDetails);
       }
     } else {
       // else, create a new entry
       console.log(`Tag is new, creating entry`);
       newTag["tech-items"] = (new Set()).add(techItem.id);
 
-      putTechItemTag(newTag);
+      await putTechItemTag(newTag);
     }
-  });
-
+  }
+  console.log("Put techItem");
   await putTechItem(techItem);
 
   return techItem;

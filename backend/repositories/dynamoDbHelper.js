@@ -46,6 +46,7 @@ const queryTechItemsTag = async (category, name) => {
 };
 
 const putTechItemTag = async (techItemTag) => {
+  console.log("PutTechItemTag", techItemTag);
   const command = new PutCommand({
     Item: {
       category:techItemTag.category,

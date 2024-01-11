@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import _ from "lodash";
 import { parseTechItemsData } from "../helpers/apiRequestHelper";
 const initialState = {
-  searchTags: [{ category:"game", name:"Guilty Gear Xrd"}, {category:"character", name:"Answer"}],
+  searchTags: [{ category:"game", name:"Guilty Gear Xrd"}, {category:"character", name:"Sol Badguy"}],
   techItems: []
 };
 
@@ -24,9 +24,13 @@ export const searchTagsSlice = createSlice({
     },
     addTechItem(state, action) {
       const parsedPayload = parseTechItemsData([action.payload]);
-      const newTechItemsList = _.cloneDeep(state.techItems);
-      newTechItemsList.push(parsedPayload[0]);
-      state.techItems = newTechItemsList;
+      if(!state.techItems || state.techItems.length == 0) {
+        state.techItems = parsedPayload[0];
+      } else {
+        const newTechItemsList = _.cloneDeep(state.techItems);
+        newTechItemsList.push(parsedPayload[0]);
+        state.techItems = newTechItemsList;
+      }
     },
     setTechItems(state, action) {
       state.techItems = action.payload;
