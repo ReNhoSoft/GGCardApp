@@ -45,8 +45,9 @@ export function parseTechItemsData(techItems) {
 
 async function loadDataFromAWS(tags) {
   // TODO: Finish implementing query string mapping
-  const queryStrings = tags ? tags.map(tag => `category=${tag.category}`).join("&") : "";
-  return fetch("https://neutraltech.renhosoft.net/techitemtags?"+queryStrings)
+  const tagArray = tags?.map(tag => [tag.category, tag.name]);
+  const queryString = tagArray && tagArray.length > 0 ? "?tags=" + encodeURIComponent(JSON.stringify(tagArray)) : "";
+  return fetch("https://neutraltech.renhosoft.net/techitemtags" + queryString)
       .then((rawFile) => {
         return rawFile.json();
       })

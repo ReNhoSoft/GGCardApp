@@ -24,7 +24,7 @@ const getTechItemTagsByCategory = async (category) => {
   return null;
 };
 
-const queryTechItemsTag = async ({category, name}) => {
+const queryTechItemsTag = async (category, name) => {
   const command = new QueryCommand({
     TableName: "tech-item-tags",
     KeyConditionExpression: "#name = :name and category = :category",
