@@ -2,6 +2,8 @@ const filterTags = (techItems, searchTags) => {
   if (!searchTags || searchTags.length < 1) {
     return techItems;
   }
+  return techItems;
+  // TODO: Filter items based on active search tags
   let result = techItems.filter((techItem) => {
     const find = searchTags.reduce((acc1, searchTag) => {
       return acc1 &&

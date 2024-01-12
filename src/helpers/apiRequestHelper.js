@@ -1,20 +1,27 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { searchActions } from "../store/searchData";
-import { getTechItemsByTag } from "../../backend/routes/techItemTags/techItemTagService";
 
-export function loadDataFromServer() {
+export function useLoadDataFromServer(searchTags) {
+  const [isLoading, setIsLoading] = useState(false);
   const dispatcher = useDispatch();
-  useEffect(() => {
-    loadDataFromAWS().then( techItems => {
-      console.log(techItems);
-      dispatcher(searchActions.setTechItems(techItems));
-    })
-  }, []);
 
+  useEffect(() => {
+    setIsLoading(true);
+    loadDataFromAWS(searchTags).then( techItems => {
+      dispatcher(searchActions.setTechItems(techItems));
+      setIsLoading(false);
+    })
+  }, [searchTags]);
+
+  return isLoading;
 }
 
-function parseData(techItems) {
+export function parseTechItemsData(techItems) {
+
+  if(!techItems || techItems.length == 0) {
+    return null;
+  }
 
   let result = [];
   techItems.forEach((techItem, index) => {
@@ -36,15 +43,17 @@ function parseData(techItems) {
   return result;
 }
 
-async function loadDataFromAWS() {
-  return fetch("https://neutraltech.renhosoft.net/techitemtags?category=game")
+async function loadDataFromAWS(tags) {
+  // TODO: Finish implementing query string mapping
+  const tagArray = tags?.map(tag => [tag.category, tag.name]);
+  const queryString = tagArray && tagArray.length > 0 ? "?tags=" + encodeURIComponent(JSON.stringify(tagArray)) : "";
+  return fetch("https://neutraltech.renhosoft.net/techitemtags" + queryString)
       .then((rawFile) => {
         return rawFile.json();
       })
       .then((data) => {
         if(data.message == "Success") {
-          console.log(data.data)
-          let techItems = parseData(data.data["tech-items"]);
+          let techItems = parseTechItemsData(data.data["tech-items"]);
           return techItems;
         } else {
           // TODO: Add error handling for data loading

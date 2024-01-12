@@ -1,34 +1,37 @@
 import { createSlice } from "@reduxjs/toolkit";
 import _ from "lodash";
+import { parseTechItemsData } from "../helpers/apiRequestHelper";
 const initialState = {
-  searchTags: [],
+  searchTags: [{ category:"game", name:"Guilty Gear Xrd"}, {category:"character", name:"Sol Badguy"}],
   techItems: []
 };
-
-const clearTag = (tag) => {
-  return tag.toLowerCase().trim();
-}
 
 
 export const searchTagsSlice = createSlice({
   name: "search",
   initialState,
   reducers: {
-    add(state, action) {
-      let cleanTag = clearTag(action.payload);
-      if(state.searchTags.indexOf(cleanTag.toLowerCase()) < 0) {
-        state.searchTags.push(cleanTag.toLowerCase());
-      }
+    addTag(state, action) {
+      const newSearchTags = state.searchTags.filter(tag => tag.category != action.payload.category);
+      newSearchTags.push(action.payload);
+      state.searchTags =  newSearchTags;
     },
-    remove(state, action) {
-      let cleanTag = clearTag(action.payload);
-      state.searchTags = [
-        ...state.searchTags.slice(0, state.searchTags.indexOf(cleanTag)),
-        ...state.searchTags.slice(state.searchTags.indexOf(cleanTag)+1, state.searchTags.length),
-      ];
+    removeTag(state, action) {
+      // TODO: Implement removing Tags in reducer
+      state.searchTags = state.searchTags.filter(tag => tag.category != action.payload.category);
     },
-    clear(state) {
+    clearTags(state) {
       state.searchTags = [];
+    },
+    addTechItem(state, action) {
+      const parsedPayload = parseTechItemsData([action.payload]);
+      if(!state.techItems || state.techItems.length == 0) {
+        state.techItems = parsedPayload[0];
+      } else {
+        const newTechItemsList = _.cloneDeep(state.techItems);
+        newTechItemsList.push(parsedPayload[0]);
+        state.techItems = newTechItemsList;
+      }
     },
     setTechItems(state, action) {
       state.techItems = action.payload;

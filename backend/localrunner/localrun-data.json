@@ -1,29 +1,51 @@
 {
-  "version": "2.0",
-  "routeKey": "$default",
-  "rawPath": "/techItem",
-  "rawQueryString": "parameter1=value1&parameter1=value2&parameter2=value",
-  "requestContext": {
-    "path": "/techItem",
-    "httpMethod": "GET"
-  },
-  "cookies": ["cookie1", "cookie2"],
+  "resource": "/{proxy+}",
+  "path": "/techitemtags",
+  "httpMethod": "GET",
   "headers": {
-    "Header1": "value1",
-    "Header2": "value1,value2"
+    "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+    "accept-encoding": "gzip, deflate, br",
+    "accept-language": "en-US,en;q=0.9,es;q=0.8",
+    "Host": "neutraltech.renhosoft.net",
+    "sec-ch-ua-mobile": "?0",
+    "sec-fetch-dest": "document",
+    "sec-fetch-mode": "navigate",
+    "sec-fetch-site": "none",
+    "upgrade-insecure-requests": "1",
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+    "X-Amzn-Trace-Id": "Root=1-659f58fb-612f80ad5ec416a62e7533b5",
+    "X-Forwarded-For": "187.190.79.201",
+    "X-Forwarded-Port": "443",
+    "X-Forwarded-Proto": "https"
   },
-  "queryStringParameters": {
-    "category": "game",
-    "id": "0001"
+  "multiValueHeaders": {
+    "accept": [
+      "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7"
+    ],
+    "accept-encoding": [ "gzip, deflate, br" ],
+    "accept-language": [ "en-US,en;q=0.9,es;q=0.8" ],
+    "Host": [ "neutraltech.renhosoft.net" ],
+    "X-Amzn-Trace-Id": [ "Root=1-659f58fb-612f80ad5ec416a62e7533b5" ],
+    "X-Forwarded-For": [ "187.190.79.201" ],
+    "X-Forwarded-Port": [ "443" ],
+    "X-Forwarded-Proto": [ "https" ]
   },
+  "queryStringParameters": { "tags": "[[\"game\",\"Guilty Gear Xrd\"],[\"character\",\"Sol Badguy\"]]" },
 
-  "body": "eyJ0ZXN0IjoiYm9keSJ9",
-  "pathParameters": {
-    "parameter1": "value1"
-  },
-  "isBase64Encoded": true,
-  "stageVariables": {
-    "stageVariable1": "value1",
-    "stageVariable2": "value2"
+  "pathParameters": { "proxy": "techitemtags" },
+  "stageVariables": null,
+  "requestContext": {
+    "resourceId": "4vn3i6",
+    "resourcePath": "/{proxy+}",
+    "httpMethod": "GET",
+    "extendedRequestId": "RWrXTG5coAMEJfw=",
+    "requestTime": "11/Jan/2024:02:56:59 +0000",
+    "path": "/techitemtags",
+    "accountId": "440434328573",
+    "protocol": "HTTP/1.1",
+    "stage": "production",
+    "domainPrefix": "neutraltech",
+    "requestTimeEpoch": 1704941819230,
+    "requestId": "679136d2-b84b-41ef-8e79-272ec29306f4"
   }
 }

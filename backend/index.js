@@ -12,7 +12,7 @@ async function handler(event) {
     }
 
     const resourceName = path.split("/")[1].toLowerCase();
-    console.log(`Recieved request for resource ${resourceName} and method ${httpMethod}`);
+    console.log(`Recieved request for resource ${resourceName} and method ${httpMethod} with params ${JSON.stringify(params)}`);
     const resource = routes[path.split("/")[1].toLowerCase()];
     if (!resource) {
         console.log("Cant find requested resource");

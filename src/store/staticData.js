@@ -6,7 +6,7 @@ const initialState = [
     type:"fixed",
     values: [
       { value: "Guilty Gear Xrd" },
-      { value: "Granblue Fantasy Versus Rising" },
+      { value: "Granblue Fantasy Versus: Rising" },
     ],
   },
   {
@@ -15,7 +15,8 @@ const initialState = [
     values: [
       { value: "combo" }, 
     { value: "concept" }, 
-    { value: "misc" }
+    { value: "misc" },
+    { value: "setup" },
   ],
   },
   {
@@ -26,15 +27,64 @@ const initialState = [
       {
         dependsOn: "Granblue Fantasy Versus: Rising",
         values: [
+          { value: "Anila"},
+          { value: "Anre"},
+          { value: "Avatar Belial"},
+          { value: "Beelzebub"},
+          { value: "Belial"},
+          { value: "Cagliostro"},
           { value: "Charlotta"},
+          { value: "Djeeta"},
+          { value: "Eustace"},
+          { value: "Ferry"},
+          { value: "Gran"},
+          { value: "Grimnir"},
+          { value: "Katalina"},
+          { value: "Ladiva"},
           { value: "Lancelot"},
+          { value: "Lowain"},
+          { value: "Metera"},
+          { value: "Narmaya"},
+          { value: "Nier"},
+          { value: "Percival"},
+          { value: "Seox"},
+          { value: "Siegfried"},
+          { value: "Soriz"},
+          { value: "Vaseraga"},
+          { value: "Vira"},
+          { value: "Yuel"},
+          { value: "Zeta"},
+          { value: "Zooey"},
         ]
       },
       {
         dependsOn: "Guilty Gear Xrd",
         values: [
-          { value: "Kuradoberi Jam"},
-          { value: "Sol Badguy" },
+          { value: "Answer"},
+          { value: "Axl Low"},
+          { value: "Baiken" },
+          { value: "Bedman"},
+          { value: "Chipp Zanuff"},
+          { value: "Dizzy"},
+          { value: "Elphelt Valentine"},
+          { value: "Faust"},
+          { value: "I-No"},
+          { value: "Jack-O"},
+          { value: "Jam Kuradoberi"},
+          { value: "Johnny"},
+          { value: "Kum Haehyun"},
+          { value: "Ky Kiske"},
+          { value: "Leo Whitefang"},
+          { value: "May"},
+          { value: "Millia Rage"},
+          { value: "Potemkin"},
+          { value: "Ramlethal Valentine"},
+          { value: "Raven"},
+          { value: "Sin Kiske"},
+          { value: "Slayer"},
+          { value: "Sol Badguy"},
+          { value: "Venom"},
+          { value: "Zato-1"},
         ]
       },
     ],
@@ -51,6 +101,28 @@ const initialState = [
   },
 ];
 
+
+export function transformDropDownData(selectedItems = [], staticData) {
+  const result = {};
+  for (let i = 0; i < staticData.length; i++) {
+    const entry = staticData[i];
+    const values = [];
+    if (entry.type == "fixed") {
+      values.push(...entry.values.map((v) => v.value));
+    } else if (entry.type == "dynamic") {
+      values.push(
+        ...entry.valueSets
+          .filter(
+            (vs) => !vs.dependsOn || selectedItems.includes(vs.dependsOn)
+          )
+          .map((vs) => vs.values.map((v) => v.value))
+          .flat(2)
+      );
+    }
+    result[entry.category] = values;
+  }
+  return result;
+}
 
 export const staticDataSlice = createSlice({
   name: "static",

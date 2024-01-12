@@ -17,7 +17,6 @@ export default function TechContainer({ layout = "table" }) {
   return (
     <>
       <div className={classes.mainContainer}>
-        {filteredItems && filteredItems.length > 0 && (
           <table>
             <thead>
               <tr>
@@ -27,12 +26,11 @@ export default function TechContainer({ layout = "table" }) {
               </tr>
             </thead>
             <tbody>
-              {filteredItems.map((item, index) => {
+            {filteredItems && filteredItems.length > 0 && filteredItems.map((item, index) => {
                 return <TechItem key={item + index} techItem={item} layout={layoutValues}/>;
               })}
             </tbody>
           </table>
-        )}
       </div>
     </>
   );

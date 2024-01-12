@@ -1,44 +1,55 @@
-import { useRef } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { searchActions } from "../../store/searchData"
-import SearchTagList from "../searchTagList/SearchTagList";
-import classes from "./SearchBar.module.css";
-
+import { transformDropDownData } from "../../store/staticData";
+import { searchActions } from "../../store/searchData";
 export default function SearchBar() {
-    const formRef = useRef();
-    const tags = useSelector(state => state.tags.searchTags);
-    const dispatcher = useDispatch();
+  const staticData = useSelector((state) => state.static);
+  const searchTags = useSelector(state => state.tags.searchTags);
+  const dispatcher = useDispatch();
+  const dropDownData = transformDropDownData(searchTags?.map(tag => tag.name), staticData);
 
-    const addSearchTag = () => {
-        dispatcher(searchActions.add(formRef.current.tagInput.value));
-        formRef.current.tagInput.value = '';
+  const onGameChanged = (event) => {
+    dispatcher(searchActions.removeTag({category:"character"}));
+    onDropdownChanged(event);
+  }
+
+  const onDropdownChanged = (event) => {
+    const modifiedTag = {category: event.target.name, name: event.target.value }
+    // Dropdown was unselected
+    if(modifiedTag.name.startsWith("--")) {
+        console.log("Remove tag", modifiedTag);
+        dispatcher(searchActions.removeTag(modifiedTag));
+    } else {
+        console.log("Add tag", modifiedTag);
+        dispatcher(searchActions.addTag(modifiedTag));
     }
+  };
 
-    const removeSearchTag = (event, tag) => {
-      dispatcher(searchActions.remove(tag));
-    }
-
-    const clearSearchTags = () => {
-      dispatcher(searchActions.clear());
-    }
-
-    return (
-      <div >
-        <div className={classes.searchBar}>
-          <form
-            onSubmit={(event) => {
-              event.preventDefault();
-              addSearchTag(event);
-            }}
-            ref={formRef}
-          >
-            <input className={classes.searchInput}
-              placeholder="Search tags"
-              name="tagInput"
-            ></input>
-          </form>
-          <SearchTagList tags={tags} onTagRemoved={removeSearchTag} onTagsCleared={clearSearchTags}/>
-        </div>
+  return (
+    <>
+      <div style={{display:"flex", flex: "auto", margin: "auto", width:"fit-content", paddingBottom:"2rem", paddingTop:"1rem" }}>
+        <select title="game" name="game" onChange={onGameChanged}>
+          {dropDownData.game
+            .toSpliced(0, 0, "--Select a Game--")
+            .map((value, index) => (
+              <option key={value}>{value}</option>
+            ))}
+        </select>
+        <select title="character" name="character" onChange={onDropdownChanged}>
+          {dropDownData.character
+            .toSpliced(0, 0, "--Select a Character--")
+            .map((value, index) => (
+              <option key={value}>{value}</option>
+            ))}
+        </select>
+        <select title="type" name="type" onChange={onDropdownChanged}>
+          {dropDownData.type
+            .toSpliced(0, 0, "--Select a Type--")
+            .map((value, index) => (
+              <option key={value}>{value}</option>
+            ))}
+        </select>
       </div>
-    );
+    </>
+  );
 }

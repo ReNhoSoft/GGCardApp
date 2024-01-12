@@ -1,8 +1,10 @@
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { Tweet } from "react-twitter-widgets";
+
+const youtubeEmbedPrefix = "https://www.youtube.com/embed/";
+
 export default function TechItemMedia({media, description}) {
-  console.log(description)
     return (
       <tr>
         <td colSpan={2} style={{ textAlign: "right" }}>
@@ -13,7 +15,7 @@ export default function TechItemMedia({media, description}) {
           <iframe
             width="420"
             height="315"
-            src={media.source}
+            src={youtubeEmbedPrefix + media.source}
           ></iframe>
         )}
         {media.type == "twitter" && (
