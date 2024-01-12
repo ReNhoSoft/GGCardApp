@@ -5,6 +5,7 @@ import Header from './Header.jsx';
 import { useRef } from 'react';
 import './App.css'
 import { useSelector } from 'react-redux';
+import SearchBar from './tableLayout/searchBar/SearchBar.jsx';
 
 
 function App() {
@@ -17,10 +18,10 @@ function App() {
   }
 
 
-  console.log(searchTags);
   return (
     <>
      <Header onClickAdd={onClickAddItem}/>
+     <SearchBar/>
      {isLoading && <img className="loaderIcon" src='/loader.gif'/>}
      {!isLoading && <TechContainer/> }
      <CreateFormModal ref={formRef}/>

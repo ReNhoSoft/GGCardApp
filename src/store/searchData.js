@@ -12,12 +12,13 @@ export const searchTagsSlice = createSlice({
   initialState,
   reducers: {
     addTag(state, action) {
-      const newSearchTags = _.cloneDeep(state.searchTags);
+      const newSearchTags = state.searchTags.filter(tag => tag.category != action.payload.category);
       newSearchTags.push(action.payload);
       state.searchTags =  newSearchTags;
     },
     removeTag(state, action) {
       // TODO: Implement removing Tags in reducer
+      state.searchTags = state.searchTags.filter(tag => tag.category != action.payload.category);
     },
     clearTags(state) {
       state.searchTags = [];

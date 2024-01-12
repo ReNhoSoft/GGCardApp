@@ -2,8 +2,9 @@ import { useRef, useImperativeHandle, forwardRef, useEffect, useState } from "re
 import { useDispatch, useSelector } from "react-redux";
 import classes from "./CreateFormModal.module.css"
 import { sendTechItem } from "../../helpers/apiRequestHelper";
-import { isMediaLinkValid, parseMediaLink, transformDropDownData } from "./CreateFormModal.util";
+import { isMediaLinkValid, parseMediaLink } from "./CreateFormModal.util";
 import { searchActions } from "../../store/searchData";
+import { transformDropDownData } from "../../store/staticData";
 
 const CreateFormModal = forwardRef((props, ref) => {
 
@@ -23,8 +24,8 @@ const CreateFormModal = forwardRef((props, ref) => {
     // Declare hooks to be used elsewhere
     const formRef = useRef();
     const dialogRef = useRef();
-    const staticData = useSelector(state => state.static);
     const dispatcher = useDispatch();
+    const staticData = useSelector(state => state.static);
     const [dropDownData, setDropDownData] = useState(transformDropDownData(["Guilty Gear Xrd"], staticData));
 
     // Util functions
