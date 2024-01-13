@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import _ from "lodash";
 import { parseTechItemsData } from "../helpers/apiRequestHelper";
 const initialState = {
-  searchTags: [{ category:"game", name:"Guilty Gear Xrd"}, {category:"character", name:"Sol Badguy"}],
+  searchTags: [],
   techItems: []
 };
 
