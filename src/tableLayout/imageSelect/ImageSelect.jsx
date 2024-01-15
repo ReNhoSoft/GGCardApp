@@ -9,14 +9,12 @@ export default function ImageSelect({
   label
 }) {
   const [displayMenu, setDisplayMenu] = useState(false);
-
-  const [selectedTag, setSelectedTag] = useState(selectedItem
+  const selectedTag = selectedItem
     ? dropDownData?.find((data) => data.value == selectedItem.name)
-    : null);
+    : null;
 
   const onItemSelectedInternal = (item) => {
     setDisplayMenu(false);
-    setSelectedTag(item);
     onItemSelected(item.value, category);
   };
 

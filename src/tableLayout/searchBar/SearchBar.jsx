@@ -15,7 +15,7 @@ export default function SearchBar() {
     dispatcher(searchActions.removeTag({category:"character", name:"dummy"}));
     onDropdownChanged(tagValue, category);
   }
-
+  console.log(searchTags);
   const onDropdownChanged = (tagValue, category) => {
     const modifiedTag = {category, name:tagValue};
     // Dropdown was unselected
