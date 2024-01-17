@@ -2,12 +2,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { transformDropDownData } from "../../store/staticData";
 import { searchActions } from "../../store/searchData";
 import ImageSelect from "../imageSelect/ImageSelect";
+import { useStoreData } from "../../helpers/customHooks";
 
 export default function SearchBar() {
-  const staticData = useSelector((state) => state.static);
-  const searchTags = useSelector(state => state.tags.searchTags);
-  const dispatcher = useDispatch();
+  const [searchTags, staticData] = useStoreData();
   const dropDownData = transformDropDownData(searchTags?.map(tag => tag.name), staticData);
+  const dispatcher = useDispatch();
   const selectedGame = searchTags.find(tag => tag.category == "game")
   const selectedCharacter = searchTags.find(tag => tag.category == "character")
 
@@ -15,7 +15,7 @@ export default function SearchBar() {
     dispatcher(searchActions.removeTag({category:"character", name:"dummy"}));
     onDropdownChanged(tagValue, category);
   }
-  console.log(searchTags);
+
   const onDropdownChanged = (tagValue, category) => {
     const modifiedTag = {category, name:tagValue};
     // Dropdown was unselected
