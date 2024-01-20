@@ -1,6 +1,8 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useRouteLoaderData } from "react-router-dom";
 
 export default function Header({ onClickAdd }) {
+  const token = useRouteLoaderData('root');
+  console.log(token);
   const navigate = useNavigate();
   return (
     <div
@@ -30,9 +32,8 @@ export default function Header({ onClickAdd }) {
         </div>
       </div>
       <div style={{whiteSpace:"nowrap", marginLeft:"auto"}}>
-        <button onClick={onClickAdd}>+ ADD</button>
-        <Link to="/login">Login</Link>
-        <Link to="/login">Sign Up</Link>
+        {token.isValid() && <button onClick={onClickAdd}>+ ADD</button> }
+        {!token.isValid() && <Link to="/login">Login</Link>}
       </div>
     </div>
   );

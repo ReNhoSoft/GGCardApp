@@ -84,7 +84,7 @@ const validateAuthToken = (accessToken) => {
 
       // Validate data on the token
       if(decodedToken.client_id == CLIENT_ID && decodedToken.iss == ISS && decodedToken.exp > currentTime) {
-        resolve({ message: "Authenticated" });
+        resolve({ message: "Authenticated", expiration: decodedToken.exp });
       }
       resolve( {message: "Token is invalid", err: "Token failed validation" });
     }

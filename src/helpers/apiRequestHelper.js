@@ -79,7 +79,7 @@ export async function loginUser(username, password) {
     const data = await response.json();
     console.log("Data?",data);
     if(response.status == 200) {
-      setToken(data.accessToken);
+      setToken(data.accessToken, data.expiration);
     }
     return data;
   });
