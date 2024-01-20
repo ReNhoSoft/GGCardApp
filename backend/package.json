@@ -9,6 +9,8 @@
     "dependencies": {
         "@aws-sdk/client-dynamodb": "^3.481.0",
         "@aws-sdk/lib-dynamodb": "^3.481.0",
+        "jsonwebtoken": "^9.0.2",
+        "jwk-to-pem": "^2.0.5",
         "short-unique-id": "^5.0.3"
     }
 }

@@ -30,7 +30,7 @@ async function handler(event) {
         { httpMethod, path }
       );
     }
-    const result = await action(params, bodyContent );
+    const result = await action({ params: params, body: bodyContent,  path: path.slice(2), token:event.headers["X-Authentication"]});
     console.log("Success", result);
     return generateResponse(200, "Success", result);
   } catch (error) {
@@ -49,7 +49,7 @@ function generateResponse(code, message, data) {
     },
     body: JSON.stringify({
       message,
-      data: { ...data },
+      ...data,
     }),
   };
 }
