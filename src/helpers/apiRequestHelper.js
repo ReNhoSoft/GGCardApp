@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { searchActions } from "../store/searchData";
-import { setToken } from "./authenticationHelper";
+import { getToken, setToken } from "./authenticationHelper";
 
 const apiBaseUrl = "https://neutraltech.renhosoft.net";
 
@@ -66,6 +66,9 @@ async function loadDataFromAWS(tags) {
 
 export async function sendTechItem(techItem, method) {
   return fetch(apiBaseUrl + "/techitem", {
+    headers: new Headers({
+      "Content-Type":"application/json",
+    }),
     body: JSON.stringify(techItem),
     method: method,
   }).then((data) => console.log(data));

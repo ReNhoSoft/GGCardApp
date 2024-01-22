@@ -67,6 +67,10 @@ const validateUser = async ({ username, password }) => {
 };
 
 const validateAuthToken = (accessToken) => {
+  if(!accessToken) {
+    return { message: "No token provided", err: "Token cannot be null"};
+  }
+
   const key = JSON.parse(atob(accessToken.split(".")[0]));
   const jwk = jwtKeys.keys.find((element) => element.kid == key.kid);
   const pem = jwkToPem(jwk);
@@ -90,4 +94,5 @@ const validateAuthToken = (accessToken) => {
     }
   )});
 };
+
 export { respondToAuthChallenge, validateUser, validateAuthToken };

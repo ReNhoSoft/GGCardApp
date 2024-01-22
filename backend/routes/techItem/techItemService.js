@@ -6,6 +6,7 @@ import {
   queryTechItemsTag,
   updateTechItemTag,
 } from "../../repositories/dynamoDbHelper.js";
+import { validateAuthToken } from "../../repositories/cognitoHelper.js";
 
 const uid = new ShortUniqueId({ length: 8 });
 const twitterRegex = /(?:http)(?:s)?:\/\/(x|twitter)\.com\/([A-Za-z0-9_]+)\/status\/([A-Za-z0-9]+)/;
@@ -23,7 +24,13 @@ const getTechItem = async ({ params }) => {
   return techItem;
 };
 
-const createTechItem = async ({params, body}) => {
+const createTechItem = async ({params, body, token}) => {
+  const tokenValidation = validateAuthToken(token);
+  if(!(tokenValidation.message == "Authenticated")) {
+    console.info(tokenValidation);
+    throw new Error(tokenValidation.err);
+  }
+
   const { description, media, name, tags } = body;
   // Validate input
   console.log(description, media, name, tags);
