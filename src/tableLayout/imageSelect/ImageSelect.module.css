@@ -42,28 +42,43 @@
     border-radius: 10px;
 }
 
-.dropdownItemContainer:hover {
-    background-color: #3d3d3d;
-}
 .dropdownItem {
     width: var(--dropdownItemWidth);
     height: var(--dropdownItemHeight);
     display: flex;
     vertical-align:middle;
     text-align: center;
+    
+}
+.dropdownItem:hover .dropdownItemlabel {
+    display:block;
 }
 
-.dropdownItem img{
+.itemImage{
     object-fit: cover;
     width: 100%;
     height: 100%;
     border-radius: 10px;
-    
+    background-position: center top;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-image: var(--bgImage);
+}
+.itemImage:hover {
+    background-image: linear-gradient(#00000070 50%,#0000003e),
+                        var(--bgImage);
 }
 
 .dropdownItemlabel {
-    align-self: center;
-    position: absolute;
-    text-align: center;
     margin:auto;
+    vertical-align: middle;
+    font-size: large;
+    font-weight: 600;
+    height: var(--dropdownItemHeight);
+    width: var(--dropdownItemWidth);
+    display: none;
+    
+    
 }
+

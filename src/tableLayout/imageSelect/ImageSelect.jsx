@@ -41,6 +41,7 @@ const ImageSelect = forwardRef(
   }
 );
 
+
 function ImageSelectOption({ item, onItemSelected, category }) {
   return (
     <div
@@ -51,10 +52,11 @@ function ImageSelectOption({ item, onItemSelected, category }) {
       }}
     >
       <div className={classes.dropdownItem}>
-        <img
-          src={item.icon}
-          style={{ objectPosition: item.iconPosition ? item.iconPosition : "" }}
-        />
+        <div className={classes.itemImage}
+          style={{ backgroundPosition: item.iconPosition ? item.iconPosition : "", '--bgImage': `url('.${item.icon}')` }}
+        >
+          <label className={classes.dropdownItemlabel}>{item.value}</label>
+        </div>
       </div>
     </div>
   );
