@@ -98,7 +98,7 @@ const CreateFormModal = forwardRef((props, ref) => {
                 <label>Game</label>
                 <select title="game" name="tiGame" onChange={onGameChanged}>
                   {dropDownData.game.map((value, index) => (
-                    <option key={value}>{value}</option>
+                    <option key={value.value}>{value.value}</option>
                   ))}
                 </select>
               </div>
@@ -106,7 +106,7 @@ const CreateFormModal = forwardRef((props, ref) => {
                 <label>Type</label>
                 <select title="type" name="tiType">
                   {dropDownData.type.map((value) => (
-                    <option key={value}>{value}</option>
+                    <option key={value.value}>{value.value}</option>
                   ))}
                 </select>
               </div>
@@ -116,7 +116,7 @@ const CreateFormModal = forwardRef((props, ref) => {
                 <label>Character</label>
                 <select title="character" name="tiCharacter">
                   {dropDownData.character.map((value) => (
-                    <option key={value}>{value}</option>
+                    <option key={value.value}>{value.value}</option>
                   ))}
                 </select>
               </div>
@@ -125,7 +125,7 @@ const CreateFormModal = forwardRef((props, ref) => {
                 <select title="character" name="tiVs">
                   <option>Everyone</option>
                   {dropDownData.character.map((value) => (
-                    <option key={value}>{value}</option>
+                    <option key={value.value}>{value.value}</option>
                   ))}
                 </select>
               </div>
@@ -133,7 +133,7 @@ const CreateFormModal = forwardRef((props, ref) => {
             <div>
               <select title="difficulty" name="tiDifficulty">
                 {dropDownData.difficulty.map((value) => (
-                  <option key={value}>{value}</option>
+                  <option key={value.value}>{value.value}</option>
                 ))}
               </select>
             </div>

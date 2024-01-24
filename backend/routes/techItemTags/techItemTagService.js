@@ -1,6 +1,7 @@
 import { queryTechItemsTag, getTechItemTagsByCategory, getTechItems } from "../../repositories/dynamoDbHelper.js";
 
-const getTechItemsByTag = async ({tags}) => {
+const getTechItemsByTag = async ({params}) => {
+    const {tags} = params || {};
     const tagArray = JSON.parse(tags);
 
     //Retrieve tech item IDs from tech-item-tags for each tag

@@ -6,12 +6,14 @@ import {
   queryTechItemsTag,
   updateTechItemTag,
 } from "../../repositories/dynamoDbHelper.js";
+import { validateAuthToken } from "../../repositories/cognitoHelper.js";
 
 const uid = new ShortUniqueId({ length: 8 });
 const twitterRegex = /(?:http)(?:s)?:\/\/(x|twitter)\.com\/([A-Za-z0-9_]+)\/status\/([A-Za-z0-9]+)/;
 const youtubeRegex = /(http)(s)?:\/\/(www.)?youtube\.com\/watch\?v\=([A-Za-z0-9]+)/
 
-const getTechItem = async ({ id }) => {
+const getTechItem = async ({ params }) => {
+  const id = { params };
   if (!id) {
     throw Error("No tech-item Id was provided");
   }
@@ -22,7 +24,14 @@ const getTechItem = async ({ id }) => {
   return techItem;
 };
 
-const createTechItem = async (params, { description, media, name, tags }) => {
+const createTechItem = async ({params, body, token}) => {
+  const tokenValidation = await validateAuthToken(token);
+  if(!(tokenValidation.message == "Authenticated")) {
+    console.info(tokenValidation);
+    throw new Error(tokenValidation.err);
+  }
+
+  const { description, media, name, tags } = body;
   // Validate input
   console.log(description, media, name, tags);
   if (!(description && media && name && tags)) {

@@ -21,6 +21,9 @@ export default function TechItemMedia({media, description}) {
         {media.type == "twitter" && (
             <Tweet tweetId={media.source}/>
         )}
+        {media.type == "streamable" && (
+          <iframe allow="fullscreen" allowfullscreen height="100%" src={`https://streamable.com/e/${media.source}?nocontrols=1`} ></iframe>
+        )}
         </td>
       </tr>
     );

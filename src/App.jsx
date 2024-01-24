@@ -1,31 +1,29 @@
 import TechContainer from './tableLayout/techContainer/TechContainer';
-import CreateFormModal from './tableLayout/createFormModal/CreateFormModal';
-import { useLoadDataFromServer } from './helpers/apiRequestHelper.js';
-import Header from './Header.jsx';
-import { useRef } from 'react';
-import './App.css'
-import { useSelector } from 'react-redux';
-import SearchBar from './tableLayout/searchBar/SearchBar.jsx';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import MainPageLayout from './pages/MainPageLayout.jsx';
+import MainPage from './pages/MainPage.jsx';
+import LoginPage from './pages/LoginPage.jsx';
+import TechItemFormPage from './pages/TechItemFormPage.jsx';
+import { getSession } from './helpers/authenticationHelper.js';
 
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <MainPageLayout />,
+    loader: getSession,
+    id: "root",
+    children: [
+      { path: "/", element: <MainPage /> },
+      { path: "/login", element: <LoginPage /> },
+      { path: "/create", element: <TechItemFormPage /> },
+    ],
+  },
+]);
 
 function App() {
-  const searchTags = useSelector(state => state.tags.searchTags);
-  const isLoading = useLoadDataFromServer(searchTags);
-  const formRef = useRef();
-
-  function onClickAddItem(event) {
-    formRef.current.showModal();
-  }
-
 
   return (
-    <>
-     <Header onClickAdd={onClickAddItem}/>
-     <SearchBar/>
-     {isLoading && <img className="loaderIcon" src='/loader.gif'/>}
-     {!isLoading && <TechContainer/> }
-     <CreateFormModal ref={formRef}/>
-    </>
+     <RouterProvider router={router}/>
   )
 }
 

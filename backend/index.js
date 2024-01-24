@@ -30,12 +30,12 @@ async function handler(event) {
         { httpMethod, path }
       );
     }
-    const result = await action(params, bodyContent );
+    const result = await action({ params: params, body: bodyContent,  path: path.slice(2), token:event.headers["x-authorization"]});
     console.log("Success", result);
     return generateResponse(200, "Success", result);
   } catch (error) {
     console.error(error);
-    return generateResponse(500, "Unexpeted error encountered", error);
+    return generateResponse(500, error.message);
   }
 }
 
@@ -45,11 +45,13 @@ function generateResponse(code, message, data) {
     isBase64Encoded: false,
     headers: {
       "content-type": "application/json",
-      "Access-Control-Allow-Origin": '*'
+      "Access-Control-Allow-Origin": '*',
+      "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
+      "Access-Control-Allow-Headers" : "Content-Type, Origin, Content-Type, X-Authorization",
     },
     body: JSON.stringify({
       message,
-      data: { ...data },
+      ...data,
     }),
   };
 }
