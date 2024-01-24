@@ -30,7 +30,7 @@ async function handler(event) {
         { httpMethod, path }
       );
     }
-    const result = await action({ params: params, body: bodyContent,  path: path.slice(2), token:event.headers["X-Authorization"]});
+    const result = await action({ params: params, body: bodyContent,  path: path.slice(2), token:event.headers["x-authorization"]});
     console.log("Success", result);
     return generateResponse(200, "Success", result);
   } catch (error) {

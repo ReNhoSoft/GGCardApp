@@ -25,7 +25,7 @@ const getTechItem = async ({ params }) => {
 };
 
 const createTechItem = async ({params, body, token}) => {
-  const tokenValidation = validateAuthToken(token);
+  const tokenValidation = await validateAuthToken(token);
   if(!(tokenValidation.message == "Authenticated")) {
     console.info(tokenValidation);
     throw new Error(tokenValidation.err);

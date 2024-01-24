@@ -67,6 +67,7 @@ async function loadDataFromAWS(tags) {
 export async function sendTechItem(techItem, method) {
   return fetch(apiBaseUrl + "/techitem", {
     headers: new Headers({
+      "X-Authorization": getToken(),
       "Content-Type":"application/json",
     }),
     body: JSON.stringify(techItem),
@@ -80,7 +81,6 @@ export async function loginUser(username, password) {
     method: "POST"
   }).then(async response => {
     const data = await response.json();
-    console.log("Data?",data);
     if(response.status == 200) {
       setToken(data.accessToken, data.expiration);
     }
