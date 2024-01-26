@@ -5,6 +5,7 @@ import { sendTechItem } from "../../helpers/apiRequestHelper";
 import { isMediaLinkValid, parseMediaLink } from "./CreateFormModal.util";
 import { searchActions } from "../../store/searchData";
 import { transformDropDownData } from "../../store/staticData";
+import CustomMarkdownEditor from "../customMarkdownEditor/CustomMarkdownEditor";
 
 const CreateFormModal = forwardRef((props, ref) => {
 
@@ -28,6 +29,7 @@ const CreateFormModal = forwardRef((props, ref) => {
     const staticData = useSelector(state => state.static);
     const [dropDownData, setDropDownData] = useState(transformDropDownData(["Guilty Gear Xrd"], staticData));
     const [customTagsCount, setCustomTagsCount] = useState(0);
+    const [markdownValue, setMarkdownValue] = useState();
 
     // Util functions
     const getFormProp = (propValue) => {
@@ -65,7 +67,7 @@ const CreateFormModal = forwardRef((props, ref) => {
         event.preventDefault();
         // Compile all the form details, create the object and send
         const name = getFormProp("tiName");
-        const description = getFormProp("tiDescription");
+        const description = markdownValue;
         const mediaValue = getFormProp("tiMediaValue");
         const game = getFormProp("tiGame");
         const type = getFormProp("tiType");
@@ -164,11 +166,7 @@ const CreateFormModal = forwardRef((props, ref) => {
                 ></input>
               </div>
               <div>
-                <textarea
-                  name="tiDescription"
-                  required={true}
-                  placeholder="Description"
-                ></textarea>
+                <CustomMarkdownEditor />
               </div>
               <div>
                 <input
