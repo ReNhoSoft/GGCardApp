@@ -66,7 +66,7 @@
     background-image: var(--bgImage);
 }
 .itemImage:hover {
-    background-image: linear-gradient(#00000070 50%,#0000003e),
+    background-image: linear-gradient(90deg,#000000c5 10%,#3131313e),
                         var(--bgImage);
 }
 
@@ -78,7 +78,5 @@
     height: var(--dropdownItemHeight);
     width: var(--dropdownItemWidth);
     display: none;
-    
-    
 }
 

@@ -1,8 +1,8 @@
 import { Link, useNavigate, useRouteLoaderData } from "react-router-dom";
+import SearchBar from "./tableLayout/searchBar/SearchBar";
 
 export default function Header({ onClickAdd }) {
   const token = useRouteLoaderData('root');
-  console.log(token);
   const navigate = useNavigate();
   return (
     <div
@@ -27,11 +27,15 @@ export default function Header({ onClickAdd }) {
             }}
           >
             a fighting game tech database{" "}
-            <label style={{ color: "red", fontSize: "xx-small" }}>v0.4a</label>
+            <label style={{ color: "red", fontSize: "xx-small" }}>beta</label>
           </h6>
         </div>
       </div>
-      <div style={{whiteSpace:"nowrap", marginLeft:"auto"}}>
+      <div style={{margin:"auto"}}>
+        <SearchBar /> 
+
+      </div>
+      <div style={{whiteSpace:"nowrap"}}>
         {token.isValid() && <button onClick={onClickAdd}>+ ADD</button> }
         {!token.isValid() && <Link to="/login">Login</Link>}
       </div>

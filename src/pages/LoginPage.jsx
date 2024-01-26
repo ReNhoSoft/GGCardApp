@@ -7,10 +7,8 @@ export default function LoginPage() {
   const navigate = useNavigate()
     const onSubmit = async (event) => {
       event.preventDefault();
-      console.log
       const { username, password } = formRef?.current?.elements;
       const loginResult = await loginUser(username.value, password.value);
-      console.log(loginResult);
       if(loginResult.message == "Authenticated") {
         navigate("/");
       }

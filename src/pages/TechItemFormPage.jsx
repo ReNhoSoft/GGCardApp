@@ -14,7 +14,6 @@ export default function TechItemFormPage () {
     const onGameChanged = (name, category) => {
         setSelectedGame({name, category});
         setSelectedChar(null);
-        console.log(charRef.current);
     }
     const onDropdownChanged = (name, category) => {
         setSelectedChar({name, category});

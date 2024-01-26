@@ -72,7 +72,7 @@ export async function sendTechItem(techItem, method) {
     }),
     body: JSON.stringify(techItem),
     method: method,
-  }).then((data) => console.log(data));
+  });
 }
 
 export async function loginUser(username, password) {

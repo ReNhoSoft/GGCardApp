@@ -1,0 +1,28 @@
+.inputTag {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    background-color: rgb(60, 59, 59);
+    height: 32px;
+    margin: auto 0px auto 2px;
+    padding: 0px 5px 0px 10px
+
+}
+
+.inputTagClose {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color: rgb(60, 59, 59);
+    height: 32px;
+    margin: auto 1px auto 2px;
+    padding: 0px 2px 0px 2px;
+    cursor: pointer;
+}
+
+.input {
+    height: 32px;
+    width: 100px;
+    padding: 0px 5px 0px 5px;
+    border-width: 0px;
+    margin: auto 5px auto 4px;
+    vertical-align: middle;
+}

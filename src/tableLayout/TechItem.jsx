@@ -12,6 +12,7 @@ export default function TechItem({techItem, layout}) {
     })} </td>
   })
 
+  tagsDisplay.splice(4, 0, <td>{techItem.damage}</td>);
   tagsDisplay.splice(2, 0, <td>{techItem.name}</td>);
   
   return (

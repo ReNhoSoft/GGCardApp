@@ -8,20 +8,21 @@ export default function TechContainer({ layout = "table" }) {
   const searchTags = useSelector((state) => state.tags.searchTags);
 
   const filteredItems = filterTags(techItems, searchTags);
-  const layoutHeaders = ["game", "type","character", "vs", "difficulty", "custom"];
+  const layoutHeaders = ["character", "type", "difficulty", "works on", "other"];
   const layoutValues = [...layoutHeaders];
 
   layoutHeaders.splice(2,0,"name");
+  layoutHeaders.splice(5,0,"damage");
   
 
   return (
     <>
       <div className={classes.mainContainer}>
-          <table>
+          <table style={{tableLayout:"fixed"}}>
             <thead>
               <tr>
                 {layoutHeaders.map((header, index) => {
-                  return <th key={index}>{header}</th>
+                  return <th key={index} >{header}</th>
                 })}
               </tr>
             </thead>

@@ -31,7 +31,7 @@ const createTechItem = async ({params, body, token}) => {
     throw new Error(tokenValidation.err);
   }
 
-  const { description, media, name, tags } = body;
+  const { description, media, name, tags, damage } = body;
   // Validate input
   console.log(description, media, name, tags);
   if (!(description && media && name && tags)) {
@@ -45,6 +45,7 @@ const createTechItem = async ({params, body, token}) => {
     media,
     name,
     tags,
+    damage
   };
 
   for(let i=0; i<techItem.tags.length; i++) {

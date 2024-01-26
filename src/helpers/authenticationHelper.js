@@ -12,7 +12,6 @@ export function getSession() {
         token: localStorage.getItem("token"),
         expiration: localStorage.getItem("expiration"),
         isValid() {
-            console.log("Hello")
             return this.token && this.expiration && (Math.floor(Date.now()/1000) < localStorage.getItem("expiration"));
         }
     }

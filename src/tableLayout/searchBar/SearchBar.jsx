@@ -3,8 +3,9 @@ import { transformDropDownData } from "../../store/staticData";
 import { searchActions } from "../../store/searchData";
 import ImageSelect from "../imageSelect/ImageSelect";
 import { useStoreData } from "../../helpers/customHooks";
+import SearchInputTag from "../SeatchInputTag/SearchInputTag";
 
-export default function SearchBar() {
+export default function SearchBar({...props}) {
   const [searchTags, staticData] = useStoreData();
   const dropDownData = transformDropDownData(searchTags?.map(tag => tag.name), staticData);
   const dispatcher = useDispatch();
@@ -38,8 +39,21 @@ export default function SearchBar() {
           paddingTop: "1rem",
         }}
       >
-        <ImageSelect dropDownData={dropDownData.game} onItemSelected={onGameChanged} selectedItem={selectedGame} label="-- Select a Game --" category="game"/>
-        <ImageSelect dropDownData={dropDownData.character} onItemSelected={onDropdownChanged} selectedItem={selectedCharacter} label="-- Select a Character --" category="character"/>
+        <ImageSelect
+          dropDownData={dropDownData.game}
+          onItemSelected={onGameChanged}
+          selectedItem={selectedGame}
+          label="-- Select a Game --"
+          category="game"
+        />
+        <ImageSelect
+          dropDownData={dropDownData.character}
+          onItemSelected={onDropdownChanged}
+          selectedItem={selectedCharacter}
+          label="-- Select a Character --"
+          category="character"
+        />
+        <SearchInputTag />
       </div>
     </>
   );
