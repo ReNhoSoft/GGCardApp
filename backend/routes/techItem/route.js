@@ -1,8 +1,9 @@
-import { createTechItem, getTechItem } from "./techItemService.js";
+import { createTechItem, getTechItem, deleteTechItem } from "./techItemService.js";
 
 const route = {
     get: getTechItem,
-    post: createTechItem
+    post: createTechItem,
+    delete: deleteTechItem
 }
 
 export default route

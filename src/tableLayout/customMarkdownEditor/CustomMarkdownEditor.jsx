@@ -35,7 +35,7 @@ const up = createInputCommand("up", "8");
 const upleft = createInputCommand("up", "7");
 
 const extraCommands = [
-    commands.group([neutral, downleft, down, downright, right, upright, up, upleft], {
+    commands.group([neutral, left, downleft, down, downright, right, upright, up, upleft], {
         name:"Directions",
         groupName: "Directions",
         buttonProps: { "aria-label": "Insert direction input" },
@@ -50,7 +50,7 @@ const extraCommands = [
     }),
 ];
 
-export default function CustomMarkdownEditor() {
+export default function CustomMarkdownEditor({setValue}) {
   const [markdownValue, setMarkdownValue] = useState();
 
   return (
@@ -58,7 +58,7 @@ export default function CustomMarkdownEditor() {
       height={200}
       value={markdownValue}
       extraCommands={extraCommands}
-      onChange={setMarkdownValue}
+      onChange={(event) => { setMarkdownValue(event); setValue(event)}}
       previewOptions={{
         rehypePlugins: [[rehypeSanitize]],
       }}

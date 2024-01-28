@@ -12,7 +12,7 @@ const USER_POOL_ID = "us-east-1_vcy9RHsJ0";
 const CLIENT_ID = "32vfs35e0ujusmfhe8ni5kluqb";
 const ISS  = "https://cognito-idp.us-east-1.amazonaws.com/us-east-1_vcy9RHsJ0"
 
-const respondToAuthChallenge = ({ username, password, session }) => {
+const respondToAuthChallenge =async  ({ username, password, session }) => {
   const client = new CognitoIdentityProviderClient({});
 
   const command = new RespondToAuthChallengeCommand({
@@ -26,9 +26,14 @@ const respondToAuthChallenge = ({ username, password, session }) => {
     Session: session,
   });
 
-  return client.send(command);
+  const response = await client.send(command);
+  const validationResult = await validateAuthToken(response.AuthenticationResult.AccessToken);
+  if(validationResult.err) {
+    throw new Error(validationResult.err)
+  }
+  
+  return { ...validationResult, accessToken:response.AuthenticationResult.AccessToken} 
 };
-/** snippet-end:[javascript.v3.cognito-idp.actions.RespondToAuthChallenge] */
 
 const validateUser = async ({ username, password }) => {
   const client = new CognitoIdentityProviderClient({});
@@ -47,6 +52,9 @@ const validateUser = async ({ username, password }) => {
     response.ChallengeName &&
     response.ChallengeName == "NEW_PASSWORD_REQUIRED"
   ) {
+    return { ...response,
+            message: "newPasswordRequired" 
+          };
     //TODO: Return challenge status and session value, prompt user to enter new password
   }
   //   const response2 = await respondToAuthChallenge({

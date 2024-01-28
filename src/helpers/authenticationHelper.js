@@ -16,3 +16,8 @@ export function getSession() {
         }
     }
 }
+
+export function deleteSession(){
+    localStorage.removeItem("token");
+    localStorage.removeItem("expiration");
+}

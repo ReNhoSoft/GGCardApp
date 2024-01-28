@@ -5,11 +5,13 @@ import TechContainer from "../tableLayout/techContainer/TechContainer";
 import Header from "../Header";
 import CreateFormModal from "../tableLayout/createFormModal/CreateFormModal";
 import { useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function MainPage() {
   const searchTags = useSelector((state) => state.tags.searchTags);
   const isLoading = useLoadDataFromServer(searchTags);
   const formRef = useRef();
+  const navigator = useNavigate()
 
   const loaderCss = {
       maxWidth: '5rem',
@@ -17,13 +19,11 @@ export default function MainPage() {
       display:'flex',
       marginTop:'5rem',
   }
-  function onClickAddItem(event) {
-    formRef.current.showModal();
-  }
+  
 
   return (
     <>
-      <Header onClickAdd={onClickAddItem} />
+      <Header />
       {isLoading && <img style={loaderCss} src="/loader.gif" />}
       {!isLoading && (
         <>

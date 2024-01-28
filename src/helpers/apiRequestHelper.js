@@ -87,3 +87,16 @@ export async function loginUser(username, password) {
     return data;
   });
 }
+
+export async function updatePassword(username, password, session) {
+  return await fetch(apiBaseUrl + "/password", {
+    body: JSON.stringify( {username, password, session}),
+    method: "POST"
+  }).then(async response => {
+    const data = await response.json();
+    if(response.status == 200) {
+      setToken(data.accessToken, data.expiration);
+    }
+    return data;
+  });
+}

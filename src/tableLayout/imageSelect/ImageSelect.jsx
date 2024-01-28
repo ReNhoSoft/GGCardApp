@@ -53,7 +53,7 @@ function ImageSelectOption({ item, onItemSelected, category }) {
     >
       <div className={classes.dropdownItem}>
         <div className={classes.itemImage}
-          style={{ backgroundPosition: item.iconPosition ? item.iconPosition : "", '--bgImage': `url('.${item.icon}')` }}
+          style={{ backgroundPosition: item.iconPosition ? item.iconPosition : "", '--bgImage': `url(${item.icon})` }}
         >
           <label className={classes.dropdownItemlabel}>{item.value}</label>
         </div>

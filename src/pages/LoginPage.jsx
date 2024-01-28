@@ -1,36 +1,53 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { loginUser } from "../helpers/apiRequestHelper";
+import { loginUser, updatePassword } from "../helpers/apiRequestHelper";
+import Header from "../Header";
 
 export default function LoginPage() {
-  const formRef = useRef()
-  const navigate = useNavigate()
-    const onSubmit = async (event) => {
-      event.preventDefault();
-      const { username, password } = formRef?.current?.elements;
-      const loginResult = await loginUser(username.value, password.value);
-      if(loginResult.message == "Authenticated") {
-        navigate("/");
-      }
-    }
+  const formRef = useRef();
+  const navigate = useNavigate();
+  const [newPasswordData, setNewPasswordData] = useState(null);
 
-    return (
-      <div>
-        <form style={{width:"30rem", margin:"auto"}} ref={formRef}>
-          <div style={{display:"flex"}}>
-            <label style={{width:"8rem"}}>Username</label>
+  const onSubmit = async (event) => {
+    event.preventDefault();
+    const { username, password } = formRef?.current?.elements;
+    let loginResult;
+    if(!newPasswordData) {
+      console.log("login")
+      loginResult = await loginUser(username.value, password.value);
+    } else {
+      console.log("update")
+      loginResult = await updatePassword(newPasswordData.user, password.value, newPasswordData.session);
+    }
+    if (loginResult.message == "Authenticated") {
+      navigate("/");
+    } else if (loginResult.message == "newPasswordRequired") {
+      setNewPasswordData({user: username.value, session: loginResult.Session});
+    }
+  };
+
+  return (
+    <>
+      <Header showSearchBar={false} />
+
+      <main>
+        {newPasswordData && <h3>Please enter a new password</h3> }
+        <form style={{ width: "30rem", margin: "auto" }} ref={formRef}>
+          {!newPasswordData && <div style={{ display: "flex" }}>
+            <label style={{ width: "8rem" }}>Username</label>
             <input type="email" name="username"></input>
-          </div>
-          <div style={{display:"flex"}}>
-            <label style={{width:"8rem"}}>Password</label>
+          </div> }
+          <div style={{ display: "flex" }}>
+            <label style={{ width: "8rem" }}>{newPasswordData ? "New Password" : "Password"}</label>
             <input type="password" name="password"></input>
           </div>
-          <div style={{display:"flex"}}>
-            <div style={{margin:"auto"}}></div>
+          <div style={{ display: "flex" }}>
+            <div style={{ margin: "auto" }}></div>
             <button onClick={onSubmit}>Login</button>
             <Link to="/">Cancel</Link>
           </div>
         </form>
-      </div>
-    ); 
+      </main>
+    </>
+  );
 }
