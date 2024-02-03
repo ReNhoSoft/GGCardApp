@@ -17,7 +17,6 @@ export const searchTagsSlice = createSlice({
       state.searchTags =  newSearchTags;
     },
     removeTag(state, action) {
-      // TODO: Implement removing Tags in reducer
       state.searchTags = state.searchTags.filter(tag => tag.category != action.payload.category);
     },
     clearTags(state) {

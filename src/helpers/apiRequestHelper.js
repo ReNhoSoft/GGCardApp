@@ -72,7 +72,7 @@ export async function sendTechItem(techItem, method) {
     }),
     body: JSON.stringify(techItem),
     method: method,
-  }).then((data) => console.log(data));
+  });
 }
 
 export async function loginUser(username, password) {
@@ -85,5 +85,28 @@ export async function loginUser(username, password) {
       setToken(data.accessToken, data.expiration);
     }
     return data;
+  });
+}
+
+export async function updatePassword(username, password, session) {
+  return await fetch(apiBaseUrl + "/password", {
+    body: JSON.stringify( {username, password, session}),
+    method: "POST"
+  }).then(async response => {
+    const data = await response.json();
+    if(response.status == 200) {
+      setToken(data.accessToken, data.expiration);
+    }
+    return data;
+  });
+}
+
+export async function deleteTechItem(techItemId) {
+  return await fetch(apiBaseUrl + "/techitem?id=" + techItemId, {
+    headers: new Headers({
+      "X-Authorization": getToken(),
+      "Content-Type":"application/json",
+    }),
+    method: "DELETE",
   });
 }

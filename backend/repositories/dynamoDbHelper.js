@@ -1,7 +1,7 @@
 import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
 import { DynamoDBDocumentClient, GetCommand, QueryCommand, BatchGetCommand, PutCommand, UpdateCommand, DeleteCommand } from "@aws-sdk/lib-dynamodb";
 
-const client = new DynamoDBClient({});
+const client = new DynamoDBClient();
 const docClient = DynamoDBDocumentClient.from(client);
 
 const getTechItemTagsByCategory = async (category) => {
@@ -171,11 +171,11 @@ const updateTechItem = async (techItem) => {
   return;
 }
 
-const deleteTechItem = async (techItem) => {
+const deleteTechItem = async (techItemId) => {
   const command = new DeleteCommand({
     TableName: "tech-items",
     Key: {
-      id: techItem.id
+      id: techItemId
     },
   });
   const response = await docClient.send(command);

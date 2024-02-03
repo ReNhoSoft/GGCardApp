@@ -5,6 +5,7 @@ import {
   queryTechItem,
   queryTechItemsTag,
   updateTechItemTag,
+  deleteTechItem as deleteTechItemDB
 } from "../../repositories/dynamoDbHelper.js";
 import { validateAuthToken } from "../../repositories/cognitoHelper.js";
 
@@ -31,7 +32,7 @@ const createTechItem = async ({params, body, token}) => {
     throw new Error(tokenValidation.err);
   }
 
-  const { description, media, name, tags } = body;
+  const { description, media, name, tags, damage } = body;
   // Validate input
   console.log(description, media, name, tags);
   if (!(description && media && name && tags)) {
@@ -45,6 +46,7 @@ const createTechItem = async ({params, body, token}) => {
     media,
     name,
     tags,
+    damage
   };
 
   for(let i=0; i<techItem.tags.length; i++) {
@@ -56,6 +58,8 @@ const createTechItem = async ({params, body, token}) => {
     const newTag = { category: tag.category, name: tag.value };
     const mappingDetails = await queryTechItemsTag(newTag.category, newTag.name);
     if (mappingDetails) {
+      if(!mappingDetails["tech-items"]) mappingDetails["tech-items"] = new Set();
+
       // If it does, add a mapping to the new tech item
       console.log("Tag exists, updating mapping");
       if (!mappingDetails["tech-items"].has(techItem.id)) {
@@ -76,4 +80,39 @@ const createTechItem = async ({params, body, token}) => {
   return techItem;
 };
 
-export { getTechItem, createTechItem };
+const deleteTechItem = async ({ params, body}) => {
+  const tokenValidation = await validateAuthToken(token);
+  if(!(tokenValidation.message == "Authenticated")) {
+    console.info(tokenValidation);
+    throw new Error(tokenValidation.err);
+  }
+  
+  const { id } =  params ;
+  console.log("Removing tech item with id "+ id);
+  const techItem = await queryTechItem(id);
+  // for each tag, retrieve it and delete the current id from the list
+  console.log("Retrieved tech item");
+  for(let i=0; i<techItem.tags.length; i++) {
+    const tag = techItem.tags[i];
+
+    // For each tag, validate if the mapping exists in tech-item-tags
+    console.log(`Validating tag exists: ${tag.category} : ${tag.value}`);
+
+    const newTag = { category: tag.category, name: tag.value };
+    const mappingDetails = await queryTechItemsTag(newTag.category, newTag.name);
+    if (mappingDetails) {
+      if(!mappingDetails["tech-items"]) mappingDetails["tech-items"] = new Set();
+
+      if (mappingDetails["tech-items"].has(techItem.id)) {
+        console.log("Tag exists, removing mapping");
+        mappingDetails["tech-items"].delete(techItem.id);
+        if(mappingDetails["tech-items"].size == 0) mappingDetails["tech-items"] = null;
+        await updateTechItemTag(mappingDetails);
+      }
+    } 
+  }
+  const resultMessage = await deleteTechItemDB(id);
+  return { message: resultMessage };
+}
+
+export { getTechItem, createTechItem, deleteTechItem };

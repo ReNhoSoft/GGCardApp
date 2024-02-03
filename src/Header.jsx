@@ -1,9 +1,20 @@
 import { Link, useNavigate, useRouteLoaderData } from "react-router-dom";
+import SearchBar from "./tableLayout/searchBar/SearchBar";
+import { deleteSession } from "./helpers/authenticationHelper";
 
-export default function Header({ onClickAdd }) {
+export default function Header({ showSearchBar = true }) {
   const token = useRouteLoaderData('root');
-  console.log(token);
   const navigate = useNavigate();
+  
+  function onClickAddItem(event) {
+    navigate("/create");
+  }
+
+  function onClickLogout(event) {
+    deleteSession();
+    navigate("/login");
+  }
+
   return (
     <div
       style={{
@@ -22,17 +33,22 @@ export default function Header({ onClickAdd }) {
           <h6
             style={{
               textAlign: "center",
-              marginTop: "-1.5rem",
+              marginTop: "-1.5rem", 
               fontSize: "xx-small",
             }}
           >
             a fighting game tech database{" "}
-            <label style={{ color: "red", fontSize: "xx-small" }}>v0.4a</label>
+            <label style={{ color: "red", fontSize: "xx-small" }}>beta</label>
           </h6>
         </div>
       </div>
-      <div style={{whiteSpace:"nowrap", marginLeft:"auto"}}>
-        {token.isValid() && <button onClick={onClickAdd}>+ ADD</button> }
+      <div style={{margin:"auto"}}>
+        {showSearchBar&& <SearchBar /> } 
+
+      </div>
+      <div style={{whiteSpace:"nowrap"}}>
+        {token.isValid() && <button onClick={onClickAddItem}>+ ADD</button> }
+        {token.isValid() && <button onClick={onClickLogout}>LOG OUT</button> }
         {!token.isValid() && <Link to="/login">Login</Link>}
       </div>
     </div>

@@ -46,7 +46,7 @@ function generateResponse(code, message, data) {
     headers: {
       "content-type": "application/json",
       "Access-Control-Allow-Origin": '*',
-      "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
+      "Access-Control-Allow-Methods": "OPTIONS,POST,GET, PATCH, DELETE",
       "Access-Control-Allow-Headers" : "Content-Type, Origin, Content-Type, X-Authorization",
     },
     body: JSON.stringify({

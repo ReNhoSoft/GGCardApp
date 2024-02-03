@@ -27,7 +27,7 @@ const initialState = [
     category: "type",
     type: "fixed",
     values: [
-      { value: "bnbs" },
+      { value: "bnb" },
       { value: "optimal" },
       { value: "meter dump" },
       { value: "setup" },

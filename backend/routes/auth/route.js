@@ -1,7 +1,9 @@
-import { authenticateUser } from "./authService.js"
+import { authenticateUser, updateUserPassword } from "./authService.js"
 
 const loginRoutes = {
-    post: authenticateUser
+    post: authenticateUser,
 }
-
-export { loginRoutes }
+const updatePasswordRoute ={
+    post: updateUserPassword
+}
+export { loginRoutes, updatePasswordRoute }

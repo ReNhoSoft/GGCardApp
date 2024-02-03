@@ -13,6 +13,7 @@
     "@aws-sdk/client-dynamodb": "^3.478.0",
     "@aws-sdk/lib-dynamodb": "^3.481.0",
     "@reduxjs/toolkit": "^2.0.1",
+    "@uiw/react-md-editor": "^4.0.3",
     "lodash": "^4.17.21",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -20,6 +21,7 @@
     "react-redux": "^9.0.4",
     "react-router-dom": "^6.21.2",
     "react-twitter-widgets": "^1.11.0",
+    "rehype-sanitize": "^6.0.0",
     "remark-gfm": "^4.0.0"
   },
   "devDependencies": {

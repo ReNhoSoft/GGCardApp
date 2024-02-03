@@ -5,6 +5,7 @@ import { sendTechItem } from "../../helpers/apiRequestHelper";
 import { isMediaLinkValid, parseMediaLink } from "./CreateFormModal.util";
 import { searchActions } from "../../store/searchData";
 import { transformDropDownData } from "../../store/staticData";
+import CustomMarkdownEditor from "../customMarkdownEditor/CustomMarkdownEditor";
 
 const CreateFormModal = forwardRef((props, ref) => {
 
@@ -27,6 +28,8 @@ const CreateFormModal = forwardRef((props, ref) => {
     const dispatcher = useDispatch();
     const staticData = useSelector(state => state.static);
     const [dropDownData, setDropDownData] = useState(transformDropDownData(["Guilty Gear Xrd"], staticData));
+    const [customTagsCount, setCustomTagsCount] = useState(0);
+    const [markdownValue, setMarkdownValue] = useState();
 
     // Util functions
     const getFormProp = (propValue) => {
@@ -46,33 +49,49 @@ const CreateFormModal = forwardRef((props, ref) => {
     }
 
     const onCancel = (event) => {
+      setCustomTagsCount(0);
       dialogRef.current.close();
     }
 
+    const onAddCustomTag = (event) => {
+      setCustomTagsCount(count => { count= count+1;  return count;})
+      event.preventDefault();
+    }
+
+    const onRemoveCustomTag = (event) => {
+      setCustomTagsCount(count => { count= count-1; return count;});
+      event.preventDefault();
+    }
     
     const onSubmit = async (event) => {
         event.preventDefault();
         // Compile all the form details, create the object and send
         const name = getFormProp("tiName");
-        const description = getFormProp("tiDescription");
+        const description = markdownValue;
         const mediaValue = getFormProp("tiMediaValue");
         const game = getFormProp("tiGame");
         const type = getFormProp("tiType");
         const difficulty = getFormProp("tiDifficulty");
         const character = getFormProp("tiCharacter");
         const vs = getFormProp("tiVs");
+        const damage = getFormProp("tiDamage");
         const techItem = {
           name,
           description,
+          damage,
           tags: [
             createTag("game", game),
             createTag("character", character),
             createTag("type", type),
             createTag("difficulty", difficulty),
-            createTag("vs", vs)
+            createTag("works on", vs)
           ]
         }
 
+        createTag("works on", vs)
+        for(let i = 0; i < customTagsCount; i++) {
+          techItem.tags.push(createTag("other", getFormProp("tiCustomTag" + i)))
+        }
 
         // TODO: Display validation errors
         if(!isMediaLinkValid(mediaValue)) {
@@ -121,7 +140,7 @@ const CreateFormModal = forwardRef((props, ref) => {
                 </select>
               </div>
               <div className={classes.TagSelect}>
-                <label>Against</label>
+                <label>Works On</label>
                 <select title="character" name="tiVs">
                   <option>Everyone</option>
                   {dropDownData.character.map((value) => (
@@ -131,6 +150,7 @@ const CreateFormModal = forwardRef((props, ref) => {
               </div>
             </div>
             <div>
+              <label>Difficulty </label>
               <select title="difficulty" name="tiDifficulty">
                 {dropDownData.difficulty.map((value) => (
                   <option key={value.value}>{value.value}</option>
@@ -146,11 +166,7 @@ const CreateFormModal = forwardRef((props, ref) => {
                 ></input>
               </div>
               <div>
-                <textarea
-                  name="tiDescription"
-                  required={true}
-                  placeholder="Description"
-                ></textarea>
+                <CustomMarkdownEditor />
               </div>
               <div>
                 <input
@@ -159,6 +175,31 @@ const CreateFormModal = forwardRef((props, ref) => {
                   placeholder="Media Link"
                 ></input>
               </div>
+              <div>
+                <input
+                  name="tiDamage"
+                  required={true}
+                  placeholder="Damage"
+                ></input>
+              </div>
+              <hr></hr>
+              <div >
+                {customTagsCount > 0 && new Array(customTagsCount).fill(0).map((tag, index) => (
+                  <div style={{ display: "flex" }}>
+                    <input
+                      name={`tiCustomTag${index}`}
+                      required={true}
+                      placeholder="Custom tag"
+                    ></input>
+                    
+                  </div>
+                ))}
+                <div>
+                  <button onClick={onAddCustomTag}>Add tag</button> 
+                  {customTagsCount > 0 && <button onClick={onRemoveCustomTag}>Remove tag</button> }
+                </div>
+              </div>
+              <hr/>
               <button onClick={onSubmit}>Submit</button>
               <button onClick={onCancel}>Cancel</button>
             </div>
