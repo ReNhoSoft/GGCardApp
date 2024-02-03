@@ -100,3 +100,13 @@ export async function updatePassword(username, password, session) {
     return data;
   });
 }
+
+export async function deleteTechItem(techItemId) {
+  return await fetch(apiBaseUrl + "/techitem?id=" + techItemId, {
+    headers: new Headers({
+      "X-Authorization": getToken(),
+      "Content-Type":"application/json",
+    }),
+    method: "DELETE",
+  });
+}

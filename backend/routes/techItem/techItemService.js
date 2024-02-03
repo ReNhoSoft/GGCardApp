@@ -81,6 +81,12 @@ const createTechItem = async ({params, body, token}) => {
 };
 
 const deleteTechItem = async ({ params, body}) => {
+  const tokenValidation = await validateAuthToken(token);
+  if(!(tokenValidation.message == "Authenticated")) {
+    console.info(tokenValidation);
+    throw new Error(tokenValidation.err);
+  }
+  
   const { id } =  params ;
   console.log("Removing tech item with id "+ id);
   const techItem = await queryTechItem(id);
